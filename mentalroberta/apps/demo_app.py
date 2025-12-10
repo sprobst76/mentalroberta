@@ -17,7 +17,6 @@ import sys
 ROOT_DIR = Path(__file__).resolve().parents[2]
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
-from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
@@ -25,6 +24,7 @@ import plotly.graph_objects as go
 import streamlit as st
 import torch
 import torch.nn.functional as F
+import shutil
 
 from mentalroberta.model import MentalRoBERTaCaps
 
@@ -66,14 +66,15 @@ LABELS_DE = ['Depression', 'Angst', 'Bipolar', 'Suizidalität', 'Ventil']
 COLORS = ['#636EFA', '#EF553B', '#00CC96', '#AB63FA', '#FFA15A']
 
 # Konfiguration
-BASE_MODEL_NAME = "deepset/gbert-base"
+DEFAULT_MODEL = "deepset/gbert-base"
+BASE_MODEL_NAME = os.getenv("MENTALROBERTA_BASE_MODEL", DEFAULT_MODEL)
 CHECKPOINT_PATH = Path("checkpoints/best_model.pt")
 ONNX_PATH = Path("checkpoints/model.onnx")
 ONNX_QUANT_PATH = Path("checkpoints/model.int8.onnx")
 DEFAULT_BACKEND = os.getenv("MENTALROBERTA_BACKEND", "pytorch")
-BASE_MODEL_NAME = os.getenv("MENTALROBERTA_BASE_MODEL", BASE_MODEL_NAME)
 ACCESS_TOKEN = os.getenv("MENTALROBERTA_APP_TOKEN")
 USAGE_LOG_PATH = Path(os.getenv("MENTALROBERTA_USAGE_LOG", "checkpoints/usage.log"))
+BROWSER_ONNX_URL = os.getenv("MENTALROBERTA_BROWSER_ONNX_URL", "/static/model.onnx")
 
 
 @st.cache_resource
@@ -211,6 +212,20 @@ def log_usage(event: str, backend: str, text_len: int, success: bool, is_trained
         pass
 
 
+def ensure_static_onnx():
+    """
+    Copy ONNX model to .streamlit/static for browser consumption and return URL.
+    """
+    static_dir = ROOT_DIR / ".streamlit" / "static"
+    static_dir.mkdir(parents=True, exist_ok=True)
+    src = ONNX_QUANT_PATH if ONNX_QUANT_PATH.exists() else ONNX_PATH
+    if not src.exists():
+        return None
+    dst = static_dir / "model.onnx"
+    shutil.copy(src, dst)
+    return BROWSER_ONNX_URL or "/static/model.onnx"
+
+
 def create_probability_chart(probs):
     """Erstelle Balkendiagramm für Vorhersage-Wahrscheinlichkeiten"""
     df = pd.DataFrame({
@@ -262,6 +277,57 @@ def create_capsule_viz(caps_lengths):
     return fig
 
 
+def render_browser_component(text: str, model_url: str):
+    """Render a lightweight browser-side ONNX inference block."""
+    labels_js = json.dumps(LABELS_DE)
+    # Simple HTML/JS component leveraging onnxruntime-web + xenova tokenizers
+    st.components.v1.html(
+        f"""
+        <div id="browser-out" style="padding:10px; background:#f7f9fc; border-radius:8px; border:1px solid #e0e7ef;">
+            Lade Browser-Inferenz...
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js"></script>
+        <script>
+        const TEXT = {json.dumps(text)};
+        const MODEL_URL = "{model_url}";
+        const TOKENIZER_MODEL = "{BASE_MODEL_NAME}";
+        const LABELS = {labels_js};
+        (async () => {{
+            try {{
+                const {{ AutoTokenizer }} = window.transformers;
+                const tokenizer = await AutoTokenizer.from_pretrained(TOKENIZER_MODEL);
+                const encoded = await tokenizer(TEXT, {{
+                    padding: true,
+                    truncation: true,
+                    max_length: 256,
+                    return_tensors: "np"
+                }});
+                const toBigInt = arr => BigInt64Array.from(arr.map(BigInt));
+                const input_ids = new ort.Tensor('int64', toBigInt(encoded.input_ids.data), encoded.input_ids.dims);
+                const attention_mask = new ort.Tensor('int64', toBigInt(encoded.attention_mask.data), encoded.attention_mask.dims);
+                const session = await ort.InferenceSession.create(MODEL_URL);
+                const outputs = await session.run({{input_ids, attention_mask}});
+                const logits = Array.from(outputs.logits.data);
+                const exps = logits.map(Math.exp);
+                const sum = exps.reduce((a,b)=>a+b,0);
+                const probs = exps.map(v => v / sum);
+                const top = probs.indexOf(Math.max(...probs));
+                const lines = probs.map((p,i)=>`${{LABELS[i]}}: ${(p*100).toFixed(1)}%`);
+                document.getElementById('browser-out').innerHTML = `
+                    <div><b>Vorhersage:</b> ${{LABELS[top]}} (${(probs[top]*100).toFixed(1)}%)</div>
+                    <div style="margin-top:6px;">${{lines.join('<br>')}}</div>
+                `;
+            }} catch (err) {{
+                document.getElementById('browser-out').innerText = 'Fehler im Browser-Inferenzpfad: ' + err;
+            }}
+        }})();
+        </script>
+        """,
+        height=260,
+    )
+
+
 def main():
     # Optional Access Gate (simple shared token)
     if ACCESS_TOKEN:
@@ -281,9 +347,10 @@ def main():
         unsafe_allow_html=True
     )
     
+    backend_options = ["PyTorch (Server)", "ONNX (Server-CPU)", "ONNX (Client-Download)", "ONNX (Browser)"]
     backend = st.sidebar.selectbox(
         "Inference-Backend",
-        ["PyTorch (Server)", "ONNX (Server-CPU)", "ONNX (Client-Download)"],
+        backend_options,
         index={"pytorch": 0, "onnx": 1}.get(DEFAULT_BACKEND, 0),
     )
 
@@ -303,7 +370,7 @@ def main():
         val_f1 = None
         epoch = None
         backend_label = "ONNX (CPU)"
-    else:
+    elif backend == "ONNX (Client-Download)":
         model = None
         tokenizer = None
         device = "client"
@@ -312,8 +379,25 @@ def main():
         epoch = None
         backend_label = "Client-ONNX"
         onnx_session = None
+    else:  # ONNX (Browser)
+        model = None
+        tokenizer = None
+        device = "browser"
+        is_trained = ONNX_PATH.exists() or ONNX_QUANT_PATH.exists()
+        val_f1 = None
+        epoch = None
+        backend_label = "Browser-ONNX"
+        onnx_session = None
 
-    if backend != "PyTorch (Server)" and onnx_session is None and backend != "ONNX (Client-Download)":
+    if backend == "ONNX (Browser)":
+        model_url = ensure_static_onnx()
+        if model_url is None:
+            st.error("Kein ONNX-Modell gefunden. Bitte zuerst exportieren.")
+            st.stop()
+    else:
+        model_url = None
+
+    if backend == "ONNX (Server-CPU)" and onnx_session is None:
         st.error("ONNX-Backend nicht verfügbar. Bitte ONNX-Modell exportieren oder onnxruntime installieren.")
         st.stop()
 
@@ -375,6 +459,8 @@ def main():
             const outputs = await session.run({input_ids, attention_mask});
             ```
             """)
+        if backend == "ONNX (Browser)" and model_url:
+            st.info(f"Browser-ONNX aktiv. Modell wird über {model_url} geladen (erfordert Internet/CORS-fähige Bereitstellung).")
     
     # Hauptinhalt
     col1, col2 = st.columns([1, 1])
@@ -409,44 +495,57 @@ def main():
         st.header("📊 Ergebnisse")
         
         if analyze_button and input_text.strip():
-            with st.spinner("Analysiere..."):
-                if backend == "PyTorch (Server)":
-                    probs, caps_lengths = predict_pytorch(input_text, model, tokenizer, device)
-                elif backend == "ONNX (Server-CPU)":
-                    probs, caps_lengths = predict_onnx(input_text, onnx_session, tokenizer)
+            if backend == "ONNX (Browser)":
+                if model_url:
+                    log_usage(
+                        event="analyze",
+                        backend=backend,
+                        text_len=len(input_text),
+                        success=True,
+                        is_trained=is_trained,
+                    )
+                    render_browser_component(input_text, model_url)
                 else:
-                    st.warning("Client-Modus aktiv: Bitte ONNX-Modell herunterladen und lokal im Browser/Client ausführen.")
-                    probs, caps_lengths = None, None
-                log_usage(
-                    event="analyze",
-                    backend=backend,
-                    text_len=len(input_text),
-                    success=probs is not None,
-                    is_trained=is_trained,
-                )
-            
-            if probs is not None:
-                # Top-Vorhersage
-                top_idx = probs.argmax()
-                top_label = LABELS_DE[top_idx]
-                top_prob = probs[top_idx] * 100
+                    st.error("Kein Browser-ONNX-Modell verfügbar.")
+            else:
+                with st.spinner("Analysiere..."):
+                    if backend == "PyTorch (Server)":
+                        probs, caps_lengths = predict_pytorch(input_text, model, tokenizer, device)
+                    elif backend == "ONNX (Server-CPU)":
+                        probs, caps_lengths = predict_onnx(input_text, onnx_session, tokenizer)
+                    else:
+                        st.warning("Client-Modus aktiv: Bitte ONNX-Modell herunterladen und lokal im Browser/Client ausführen.")
+                        probs, caps_lengths = None, None
+                    log_usage(
+                        event="analyze",
+                        backend=backend,
+                        text_len=len(input_text),
+                        success=probs is not None,
+                        is_trained=is_trained,
+                    )
                 
-                st.markdown(f"""
-                <div class="prediction-box">
-                    <h3>🎯 Vorhersage: <span style="color: {COLORS[top_idx]}">{top_label}</span></h3>
-                    <h2>{top_prob:.1f}%</h2>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                # Wahrscheinlichkeits-Diagramm
-                prob_chart = create_probability_chart(probs)
-                st.plotly_chart(prob_chart, use_container_width=True)
-                
-                # Capsule-Visualisierung
-                with st.expander("🧩 Capsule-Aktivierungen anzeigen"):
-                    caps_chart = create_capsule_viz(caps_lengths)
-                    st.plotly_chart(caps_chart, use_container_width=True)
-                    st.caption("Die Capsule-Längen repräsentieren die Konfidenz des Modells für jede Klasse.")
+                if probs is not None:
+                    # Top-Vorhersage
+                    top_idx = probs.argmax()
+                    top_label = LABELS_DE[top_idx]
+                    top_prob = probs[top_idx] * 100
+                    
+                    st.markdown(f"""
+                    <div class="prediction-box">
+                        <h3>🎯 Vorhersage: <span style="color: {COLORS[top_idx]}">{top_label}</span></h3>
+                        <h2>{top_prob:.1f}%</h2>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    # Wahrscheinlichkeits-Diagramm
+                    prob_chart = create_probability_chart(probs)
+                    st.plotly_chart(prob_chart, use_container_width=True)
+                    
+                    # Capsule-Visualisierung
+                    with st.expander("🧩 Capsule-Aktivierungen anzeigen"):
+                        caps_chart = create_capsule_viz(caps_lengths)
+                        st.plotly_chart(caps_chart, use_container_width=True)
+                        st.caption("Die Capsule-Längen repräsentieren die Konfidenz des Modells für jede Klasse.")
             
         elif analyze_button:
             st.warning("⚠️ Bitte gib einen Text zur Analyse ein.")
