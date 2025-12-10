@@ -286,16 +286,17 @@ def render_browser_component(text: str, model_url: str):
         <div id="browser-out" style="padding:10px; background:#f7f9fc; border-radius:8px; border:1px solid #e0e7ef;">
             Lade Browser-Inferenz...
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js"></script>
-        <script>
+        <script type="module">
+        import * as ort from "https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.es6.min.js";
+        import {{ AutoTokenizer }} from "https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js";
+
         const TEXT = {json.dumps(text)};
         const MODEL_URL = "{model_url}";
         const TOKENIZER_MODEL = "{BASE_MODEL_NAME}";
         const LABELS = {labels_js};
+
         (async () => {{
             try {{
-                const {{ AutoTokenizer }} = window.transformers;
                 const tokenizer = await AutoTokenizer.from_pretrained(TOKENIZER_MODEL);
                 const encoded = await tokenizer(TEXT, {{
                     padding: true,
