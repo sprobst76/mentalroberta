@@ -79,6 +79,7 @@ USAGE_LOG_PATH = Path(os.getenv("MENTALROBERTA_USAGE_LOG", "checkpoints/usage.lo
 BROWSER_ONNX_URL = os.getenv("MENTALROBERTA_BROWSER_ONNX_URL", "/static/model.onnx")
 BROWSER_TOKENIZER_MODEL = os.getenv("MENTALROBERTA_BROWSER_TOKENIZER", BASE_MODEL_NAME)
 ACCESS_CODES_RAW = os.getenv("MENTALROBERTA_ACCESS_CODES", "")
+DO_WARMUP = os.getenv("MENTALROBERTA_WARMUP", "1") == "1"
 
 
 @st.cache_resource
@@ -132,6 +133,18 @@ def load_onnx_session(onnx_path: Path):
     providers = ["CPUExecutionProvider"]
     session = ort.InferenceSession(onnx_path.as_posix(), sess_options=sess_opts, providers=providers)
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL_NAME)
+
+    if DO_WARMUP:
+        try:
+            dummy = tokenizer("warmup", return_tensors="pt", max_length=16, padding=True, truncation=True)
+            ort_inputs = {
+                "input_ids": dummy["input_ids"].numpy(),
+                "attention_mask": dummy["attention_mask"].numpy(),
+            }
+            session.run(None, ort_inputs)
+        except Exception:
+            # Warmup is best-effort; ignore failures (e.g., missing offline cache)
+            pass
 
     return session, tokenizer, "cpu"
 

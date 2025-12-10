@@ -58,6 +58,7 @@ Setze optional `MENTALROBERTA_USAGE_LOG` (Dateipfad), um Aufrufe anonym zu proto
 Setze optional `MENTALROBERTA_BASE_MODEL`, um das Basis-HF-Modell der Demo zu überschreiben (Default: deepset/gbert-base).
 Setze optional `MENTALROBERTA_BROWSER_ONNX_URL`, um den Pfad für den Browser-Inferenz-Download zu überschreiben (Default: /static/model.onnx). Backend „ONNX (Browser)“ lädt das Modell direkt im Client (erfordert onnxruntime-web/CDN).
 Setze optional `MENTALROBERTA_BROWSER_TOKENIZER` (z.B. `Xenova/bert-base-multilingual-cased`) für das Browser-Backend, falls dein Standardmodell im Browser nicht verfügbar ist; benötigt Internetzugang zu Hugging Face/CDN.
+Setze optional `MENTALROBERTA_WARMUP=0`, um den ONNX-Warmup beim Start zu deaktivieren (sonst kurzer Dummy-Run zum Beschleunigen des ersten Requests).
 
 ### Memory Notes
 - ONNX-Backend (Default) hält eine einmal geladene Session im RAM; kleiner Footprint als PyTorch, kein kontinuierliches Wachstum erwartet.

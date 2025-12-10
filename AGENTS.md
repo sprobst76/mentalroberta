@@ -19,6 +19,7 @@
 - Browser-Backend: `MENTALROBERTA_BROWSER_ONNX_URL` setzen, um das bereitgestellte ONNX (Standard: `/static/model.onnx`) für das In-Browser-Backend zu definieren.
 - Browser-Tokenizer: `MENTALROBERTA_BROWSER_TOKENIZER` setzen (z.B. `Xenova/bert-base-multilingual-cased`), falls das Standardmodell im Browser nicht verfügbar ist; benötigt Internet zu HF/CDN.
 - Memory-Hinweis: ONNX-Backend (Default) hält eine Session im RAM, geringerer Footprint. PyTorch cached Modell/Tokenizer und gibt Speicher erst nach Prozessneustart frei; bei knappen Ressourcen `MENTALROBERTA_BACKEND=onnx` nutzen. Freien Speicher mit `free -h` bzw. `nvidia-smi` prüfen.
+- Warmup steuern: `MENTALROBERTA_WARMUP=0` setzt den ONNX-Warmup (Dummy-Run) außer Kraft; Standard ist 1 für schnelleres erstes Request.
 
 ## Coding Style & Naming Conventions
 - Follow PEP 8; 4-space indentation; prefer descriptive lower_snake_case for functions/vars and PascalCase for classes (e.g., `MentalHealthDataset`).
