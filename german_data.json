@@ -1,0 +1,702 @@
+[
+  {
+    "text": "Ich fühle mich seit Wochen so leer. Nichts macht mir mehr Freude, selbst Dinge, die ich früher geliebt habe. Ich schlafe viel zu viel und komme trotzdem nicht aus dem Bett.",
+    "label": "depression"
+  },
+  {
+    "text": "Die Dunkelheit in mir wird immer größer. Ich funktioniere nur noch, aber innerlich bin ich tot. Niemand merkt es, weil ich so gut darin bin, eine Maske zu tragen.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich habe seit drei Tagen nicht geduscht und es ist mir egal. Meine Wohnung versinkt im Chaos. Ich schaffe nicht mal mehr die einfachsten Aufgaben.",
+    "label": "depression"
+  },
+  {
+    "text": "Alle anderen scheinen ihr Leben im Griff zu haben. Nur ich versage auf ganzer Linie. Ich bin eine Enttäuschung für alle, besonders für mich selbst.",
+    "label": "depression"
+  },
+  {
+    "text": "Das Aufstehen kostet mich jeden Tag unglaublich viel Kraft. Sobald ich wach bin, will ich nur noch schlafen. Der Tag fühlt sich wie eine Ewigkeit an.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich habe mich von allen zurückgezogen. Nachrichten beantworten fühlt sich unmöglich an. Meine Freunde haben aufgehört zu fragen, wie es mir geht.",
+    "label": "depression"
+  },
+  {
+    "text": "Früher war ich so motiviert und voller Energie. Jetzt erkenne ich mich selbst nicht wieder. Wo ist die Person geblieben, die ich mal war?",
+    "label": "depression"
+  },
+  {
+    "text": "Ich weine jeden Tag ohne erkennbaren Grund. Die Tränen kommen einfach. Auf der Arbeit, im Auto, beim Einkaufen. Ich kann sie nicht kontrollieren.",
+    "label": "depression"
+  },
+  {
+    "text": "Mein Therapeut sagt, ich mache Fortschritte, aber ich spüre davon nichts. Jeder Tag ist gleich grau. Wann wird es endlich besser?",
+    "label": "depression"
+  },
+  {
+    "text": "Ich esse kaum noch. Essen fühlt sich sinnlos an. Ich habe in zwei Wochen fünf Kilo verloren und es interessiert mich nicht.",
+    "label": "depression"
+  },
+  {
+    "text": "Die Antidepressiva wirken nicht mehr. Mein Arzt will die Dosis erhöhen, aber was bringt das? Vielleicht bin ich einfach kaputt.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich kann mich auf nichts mehr konzentrieren. Lesen, Filme schauen, Gespräche führen - alles ist anstrengend. Mein Kopf fühlt sich wie Watte an.",
+    "label": "depression"
+  },
+  {
+    "text": "Nachts liege ich wach und grüble. Die negativen Gedanken hören nicht auf. Ich bin so müde, aber der Schlaf kommt nicht.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich habe das Familienfest wieder abgesagt. Die Ausreden gehen mir langsam aus. Ich kann einfach nicht unter Menschen sein gerade.",
+    "label": "depression"
+  },
+  {
+    "text": "Mein Chef hat mich gefragt, ob alles okay ist. Ich habe gelogen und gesagt ja. Dabei zerbreche ich innerlich. Aber das kann ich ihm nicht sagen.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich schaue alte Fotos an und erkenne die glückliche Person darauf nicht. Das bin nicht mehr ich. Ich vermisse sie.",
+    "label": "depression"
+  },
+  {
+    "text": "Alles fühlt sich sinnlos an. Arbeiten, Beziehungen pflegen, Hobbys - wozu? Am Ende sind wir alle tot. Was macht es für einen Unterschied?",
+    "label": "depression"
+  },
+  {
+    "text": "Die Einsamkeit frisst mich auf. Ich bin von Menschen umgeben und fühle mich trotzdem komplett allein. Niemand versteht wirklich, wie es mir geht.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich habe wieder geweint, als ich heute früh aufgewacht bin. Nicht wegen etwas Bestimmtem. Einfach weil ein weiterer Tag begonnen hat.",
+    "label": "depression"
+  },
+  {
+    "text": "Meine Partnerin sagt, ich bin nicht mehr der Mensch, den sie geheiratet hat. Sie hat recht. Aber ich weiß nicht, wie ich zurückkommen soll.",
+    "label": "depression"
+  },
+  {
+    "text": "Selbst Duschen ist ein Kampf geworden. Ich sitze manchmal eine Stunde im Bad und starre die Wand an, bevor ich es schaffe reinzugehen.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich habe seit Monaten nicht mehr richtig gelacht. Wenn ich lache, ist es nur gespielt. Echte Freude kenne ich nicht mehr.",
+    "label": "depression"
+  },
+  {
+    "text": "Die Wochenenden sind am schlimmsten. Keine Struktur, keine Ablenkung. Nur ich und meine Gedanken in dieser leeren Wohnung.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich funktioniere noch, aber mehr auch nicht. Innerlich bin ich schon lange gestorben. Außen halte ich die Fassade aufrecht.",
+    "label": "depression"
+  },
+  {
+    "text": "Hoffnung ist ein Fremdwort geworden. Ich sehe keine Zukunft, in der es mir besser geht. Das war's wohl einfach für mich.",
+    "label": "depression"
+  },
+  {
+    "text": "Der Winter macht alles noch schlimmer. Kein Sonnenlicht, nur Dunkelheit. Ich warte nur noch darauf, dass der Frühling kommt.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich habe aufgehört zu planen. Urlaub, Treffen mit Freunden, egal was - es fühlt sich alles so weit weg und unerreichbar an.",
+    "label": "depression"
+  },
+  {
+    "text": "Manchmal vergesse ich zu essen, weil es mir egal ist. Mein Körper funktioniert noch, aber mein Geist hat aufgegeben.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich bin so müde vom Kämpfen. Jeden Tag aufs Neue gegen diese Schwere ankämpfen. Ich weiß nicht, wie lange ich das noch durchhalte.",
+    "label": "depression"
+  },
+  {
+    "text": "Die Medikamente machen mich gefühllos. Keine Trauer mehr, aber auch keine Freude. Ist das wirklich besser als vorher?",
+    "label": "depression"
+  },
+  {
+    "text": "Mein Herz rast und ich bekomme keine Luft. Ich bin in einem Meeting und alle starren mich an. Ich muss hier raus, sofort.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich habe schon fünfmal überprüft, ob der Herd aus ist. Trotzdem bin ich mir nicht sicher. Was wenn die Wohnung abbrennt?",
+    "label": "anxiety"
+  },
+  {
+    "text": "Morgen habe ich ein Vorstellungsgespräch und ich kann nicht schlafen. Mein Kopf spielt alle möglichen Katastrophenszenarien durch.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Jedes Mal wenn mein Handy klingelt, bekomme ich Herzrasen. Was wenn es schlechte Nachrichten sind? Ich gehe kaum noch ran.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich hatte wieder eine Panikattacke im Supermarkt. Musste alles stehen lassen und raus. Jetzt traue ich mich nicht mehr einkaufen.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Meine Brust fühlt sich ständig eng an. Ich war dreimal in der Notaufnahme - immer nur Angst, nie was Körperliches. Aber es fühlt sich so echt an.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich google ständig Symptome. Jeder Kopfschmerz ist ein Hirntumor, jedes Stechen am Herzen ein Infarkt. Ich mache mich selbst verrückt.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Soziale Situationen sind der Horror für mich. Smalltalk macht mich fertig. Ich analysiere noch Tage später jedes Wort, das ich gesagt habe.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Um drei Uhr nachts wach geworden mit diesem bekannten Kloß im Magen. Die Sorgen haben sofort angefangen. Geld, Arbeit, Gesundheit.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ins Restaurant gehen ist unmöglich geworden. Was wenn ich ersticke? Was wenn mir schlecht wird? Ich sitze immer am Ausgang und esse kaum was.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Meine Hände zittern so stark, dass ich keinen Kaffee mehr trinken kann ohne zu verschütten. Die Präsentation in einer Stunde wird eine Katastrophe.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich vermeide mittlerweile Autobahnen. Zu viele Autos, zu schnell, zu gefährlich. Meine Welt wird immer kleiner.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Der Flug ist in zwei Tagen und ich bin jetzt schon am Durchdrehen. Was wenn das Flugzeug abstürzt? Was wenn ich eine Panikattacke bekomme?",
+    "label": "anxiety"
+  },
+  {
+    "text": "Bevor ich eine E-Mail abschicke, lese ich sie zwanzigmal. Was wenn ein Fehler drin ist? Was wenn sie es falsch verstehen?",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich habe das Gefühl, alle beobachten und bewerten mich. Im Aufzug, auf der Straße, überall. Ich weiß, dass es nicht stimmt, aber das Gefühl bleibt.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Mein Arzt sagt, ich soll die Dinge gelassener sehen. Als ob ich das nicht versuche! Die Angst hat ihren eigenen Willen.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich plane jeden Tag minutiös durch, um Überraschungen zu vermeiden. Trotzdem lauert die Panik an jeder Ecke.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Gestern hatte ich Schmerzen im Arm. Sofort dachte ich: Herzinfarkt. Drei Stunden später erst konnte ich mich beruhigen. Es war nichts.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich sage ständig Verabredungen ab aus Angst. Die Ausreden werden immer kreativer. Meine Freunde fragen schon nicht mehr.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Die Angst kommt aus dem Nichts. Gerade noch alles okay, dann plötzlich dieses Gefühl von drohendem Unheil. Wovor habe ich eigentlich Angst?",
+    "label": "anxiety"
+  },
+  {
+    "text": "Öffentliche Verkehrsmittel sind der Horror. Zu viele Menschen, keine Fluchtmöglichkeit. Ich fahre lieber zwei Stunden mit dem Rad.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Mein Puls ist ständig erhöht. Selbst beim Fernsehen auf der Couch. Mein Körper ist in permanentem Alarmmodus.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich habe Angst vor der Angst. Die Furcht vor der nächsten Panikattacke ist fast schlimmer als die Attacke selbst.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Jede Nacht das gleiche: Einschlafen, nach zwei Stunden aufwachen, grübeln bis zum Morgen. Ich bin so erschöpft.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Die Deadline ist in einer Woche und ich bin paralysiert. Die Angst zu versagen lähmt mich so sehr, dass ich gar nicht anfangen kann.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Beim Arzt geht mein Blutdruck immer durch die Decke. Weißkittel-Syndrom nennt man das. Bei mir ist es eher: Überall-Syndrom.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich kontrolliere alles dreifach. Tür abgeschlossen? Herd aus? Fenster zu? Trotzdem die nagende Unsicherheit.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Mein Therapeut nennt es katastrophisierendes Denken. Mein Gehirn nennt es Vorbereitung auf das Schlimmste.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich atme flach und schnell, selbst wenn nichts Bedrohliches passiert. Mein Körper hat vergessen, wie man sich entspannt.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Die Angst hat mein Leben übernommen. Früher war ich spontan und abenteuerlustig. Jetzt plane ich jeden Schritt um Auslöser zu vermeiden.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Diese Woche war der Wahnsinn. Ich habe insgesamt vielleicht zehn Stunden geschlafen und fühle mich trotzdem wie auf Droge. Mein Kopf explodiert vor Ideen.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich habe 3000 Euro für Ausrüstung für ein Hobby ausgegeben, das ich gestern erst entdeckt habe. Mein Konto ist leer aber mir egal. Ich bin auf einer Mission.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Letzten Monat konnte ich nicht aufstehen. Diese Woche habe ich meine Wohnung renoviert, ein Unternehmen gegründet und mich für einen Marathon angemeldet.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Meine Gedanken rasen so schnell, dass ich kaum hinterherkomme. Ich rede ohne Punkt und Komma. Die Leute gucken schon komisch.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Vor drei Tagen wollte ich sterben. Heute fühle ich mich unbesiegbar. Diese Achterbahn macht mich fertig. Wer bin ich morgen?",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich habe in einem Anfall von Klarheit gekündigt. Das High ist vorbei und jetzt stehe ich ohne Job da. Warum sabotiere ich mich ständig selbst?",
+    "label": "bipolar"
+  },
+  {
+    "text": "Das Lithium macht mich flach. Ich vermisse meine Hochs, auch wenn ich weiß, dass sie gefährlich sind. Wenigstens habe ich da was gefühlt.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Spontan nach Berlin gefahren letzte Woche. Allein, ohne Plan, mitten in der Nacht. Es fühlte sich richtig an. Jetzt frage ich mich, was ich mir dabei gedacht habe.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Meine Freunde sagen, sie wissen nie, welche Version von mir sie heute bekommen. Manchmal bin ich die Party, manchmal ein Gespenst.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich habe die ganze Nacht an einem Roman geschrieben. 15.000 Wörter. Meine Finger tun weh aber mein Geist will nicht aufhören.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Der Absturz kommt. Ich spüre es. Die letzte Woche war zu gut, zu produktiv, zu euphorisch. Bald kommt die Dunkelheit.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Fünf Jahre Diagnose und ich kann meine Episoden immer noch nicht vorhersagen. Die Stabilität, die andere haben, scheint mir unerreichbar.",
+    "label": "bipolar"
+  },
+  {
+    "text": "In meiner letzten manischen Phase habe ich eine Beziehung zerstört. Sie konnte die Stimmungsschwankungen nicht mehr ertragen. Ich ihr nicht übel.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Hypomanie fühlt sich an wie Superkräfte. Kreativ, gesellig, unermüdlich. Bis sie kippt oder ich abstürze.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Mein Psychiater hat die Medikamente wieder angepasst. Das dritte Mal dieses Jahr. Es ist wie ein Tanz auf dem Drahtseil.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich pendle zwischen Welteroberung und Selbstzerstörung. Dazwischen gibt es selten etwas. Normal kenne ich nicht.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Drei Kreditkarten in einer Woche ausgereizt während meiner letzten Episode. Die Schulden erdrücken mich jetzt, wo ich gecrasht bin.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Manchmal frage ich mich, wer ich ohne die Krankheit wäre. Die Hochs und Tiefs sind so sehr Teil von mir, dass ich es nicht weiß.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Gemischte Episode gerade. Gleichzeitig rastlos und erschöpft. Voller Energie ohne Richtung. Es ist die Hölle.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich führe Tagebuch über meine Stimmungen. Jeden Tag eine Zahl von 1 bis 10. Die Kurve sieht aus wie ein Erdbeben.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Meine Familie hat gelernt, die Zeichen zu erkennen. Wenn ich anfange, große Pläne zu machen, werden sie nervös. Zu Recht.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich hasse die depressiven Phasen, aber die manischen machen mir fast mehr Angst. Da treffe ich Entscheidungen, die mein Leben ruinieren.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Schlaf ist der Schlüssel, sagen alle. Aber wie soll ich schlafen, wenn mein Gehirn um drei Uhr nachts beschließt, dass wir jetzt Chinesisch lernen?",
+    "label": "bipolar"
+  },
+  {
+    "text": "Die Medikamente halten mich in der Mitte. Keine Hochs, keine Tiefs. Manchmal vermisse ich die Extreme, obwohl ich weiß, dass sie Gift sind.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Nach jeder Episode muss ich die Scherben aufsammeln. Beziehungen kitten, Entschuldigungen schreiben, Finanzen ordnen. Es ist erschöpfend.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich habe aufgehört zu kämpfen. Es ist einfach zu viel. Ich will nicht mehr aufwachen. Der Schmerz soll einfach aufhören.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Die Briefe sind geschrieben. Sie liegen in meiner Schublade. Ich weiß noch nicht wann, aber ich weiß, dass es kommt.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Alle sagen, es wird besser. Aber ich fühle mich seit Jahren so. Wie lange soll ich noch warten auf dieses Besser?",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich habe angefangen, Methoden zu recherchieren. Ich weiß, dass ich das nicht sollte, aber die Gedanken lassen mich nicht los.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Heute Nacht fühlt sich anders an. Ich bin ruhig. Ich habe meinen Frieden gemacht. Ich wollte nur noch einmal hier schreiben.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich bin nicht aktiv suizidal, aber wenn ich morgen nicht aufwachen würde, wäre das okay. Ist das auch eine Form davon?",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Das Einzige, was mich noch hält, ist mein Hund. Er würde nicht verstehen, wohin ich gegangen bin. Für ihn halte ich noch durch.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich bin eine Last für alle. Meine Familie wäre traurig, aber langfristig besser dran ohne mich und meine Probleme.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Therapie, Medikamente, Sport, Meditation - ich habe alles probiert. Nichts hilft. Irgendwann muss man akzeptieren, dass manche Dinge nicht zu reparieren sind.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Die Gedanken sind ständig da. Jede Brücke, jedes hohe Gebäude, jede Medikamentenschachtel. Mein Gehirn zeigt mir pausenlos Optionen.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich habe gestern die Telefonseelsorge angerufen. Sie waren nett, aber es hat nicht geholfen. Wie soll ein Fremder verstehen, was ich durchmache?",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich schreibe hier, weil ich sonst niemanden habe. Meine Familie denkt, mir geht es gut. Meine Freunde kennen mich nicht wirklich.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich habe es schon einmal versucht und bin gescheitert. Manchmal bin ich dankbar dafür, manchmal enttäuscht. Heute ist ein enttäuschter Tag.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Was ist der Sinn, wenn jeder Tag nur Schmerz ist? Ich habe vergessen, wie sich Glück anfühlt. Ich bin müde vom Schauspielern.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich will nicht sterben, ich will nur nicht mehr existieren. Das ist ein Unterschied. Ich wünschte, es gäbe eine Pause-Taste.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Meine Tabletten sammle ich. Etwa ein Monat ist jetzt zusammen. Ich weiß nicht, ob oder wann ich sie benutze. Aber sie zu haben beruhigt mich seltsamerweise.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich war heute am Bahnsteig und habe auf den Zug gestarrt. Lange. Ich bin nicht gesprungen, aber der Gedanke war laut.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Niemand würde mich wirklich vermissen. Sie würden trauern, klar, aber dann weiterleben. Ohne die Bürde, die ich bin.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Der Schmerz ist physisch geworden. Es tut weh zu existieren. Jeder Atemzug ist Arbeit. Ich bin so müde.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich regle meine Angelegenheiten. Testament aktualisiert, Sachen aussortiert. Meine Familie denkt, ich räume auf. In gewisser Weise stimmt das ja auch.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Heute bin ich bewusst an der Notaufnahme vorbeigefahren. Der Teil von mir, der überleben will, macht solche Dinge. Aber er wird schwächer.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich schaue mir alte Fotos an und fühle nichts. Diese lächelnde Person existiert nicht mehr. Sie ist schon lange tot.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Die Nächte sind am schlimmsten. Wenn alle schlafen und es still ist, werden die Gedanken überwältigend.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich funktioniere noch auf Autopilot. Arbeit, Essen, Schlafen. Aber innerlich bin ich bereits gegangen.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Jeder fragt, wie es mir geht, und ich sage gut. Die Wahrheit wäre zu viel für sie. Und sie könnten sowieso nicht helfen.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich muss das einfach mal loswerden. Mein Chef ist unerträglich und ich kann nicht kündigen, weil ich das Geld brauche. Heute hat er mich vor allen bloßgestellt.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich belüge meine Eltern seit Monaten. Sie denken, ich habe noch einen Job. In Wahrheit wurde ich gefeuert. Die Scham frisst mich auf.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Meine beste Freundin seit 15 Jahren schläft mit meinem Ex. Ich habe es gerade herausgefunden. Ich weiß nicht mehr, wem ich vertrauen kann.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich liebe meine Kinder, aber manchmal bereue ich es, Mutter geworden zu sein. Da, ich hab es gesagt. Ich fühle mich schrecklich dafür.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich wurde heute an meiner Traumuni angenommen, aber kann es niemandem sagen, weil meine Mutter gerade die Krebsdiagnose bekommen hat.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Manchmal träume ich davon, einfach zu verschwinden. Nicht sterben, nur woanders neu anfangen, wo mich niemand kennt.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich hasse meinen Körper. Schon immer. Egal wie viel Sport oder Diät, ich fühle mich nie gut genug. Ich bin so müde von diesem Kampf.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Meine Hochzeit ist in zwei Monaten und ich bin mir nicht mehr sicher, ob ich ihn liebe. Alle haben schon Flüge gebucht. Ich fühle mich gefangen.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin in armen Verhältnissen aufgewachsen und verdiene jetzt sechsstellig. Trotzdem fühle ich mich wie ein Hochstapler, der jeden Moment auffliegt.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin der Familientherapeut. Alle kommen mit ihren Problemen zu mir. Aber wer hört mir zu? Ich ertrinke und keiner merkt es.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich habe meinen Partner vor drei Jahren betrogen. Nie jemandem erzählt. Die Schuld frisst mich auf, aber die Wahrheit würde alles zerstören.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Meine Oma ist letzte Woche gestorben und ich fühle nichts. Alle auf der Beerdigung haben geweint, ich war leer. Stimmt was nicht mit mir?",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin 35 und weiß immer noch nicht, was ich mit meinem Leben anfangen will. Alle anderen haben Karrieren und Familien. Ich stecke fest.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Seit 90 Tagen trocken heute. Niemand weiß, dass ich Alkoholiker war. Ich musste es jemandem sagen. Das ist das Schwerste, was ich je gemacht habe.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich lese heimlich die Nachrichten meines Mannes. Er schreibt mit seiner Ex. Nichts Schlimmes, aber warum verheimlicht er es? Ich weiß nicht, was ich tun soll.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Zum dritten Mal durchs Staatsexamen gefallen. 100.000 Euro für Jura ausgegeben und ich werde nie Anwältin. Ich bin eine komplette Versagerin.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mein Mitbewohner isst ständig mein Essen und leugnet es. So eine Kleinigkeit, aber es macht mich wahnsinnig. Ausziehen kann ich mir nicht leisten.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin heimlich erleichtert, dass mein Vater stirbt. Er war mein ganzes Leben lang gewalttätig. Alle erwarten, dass ich am Boden zerstört bin.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich täusche seit Monaten Homeoffice vor. Vielleicht zwei Stunden echte Arbeit am Tag. Die Angst aufzufliegen ist enorm, aber ich kann nicht aufhören.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mein Therapeut hat die Schweigepflicht gebrochen und meiner Mutter von unseren Sitzungen erzählt. Mein einziger sicherer Ort ist zerstört.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Heute vor fünf Jahren habe ich mein Kind verloren. Fehlgeburt in der 20. Woche. Niemand erinnert sich außer mir. Ich denke jeden Tag daran.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin trans, aber ich werde mich nie outen. Meine Familie ist zu konservativ. Ich werde mein Leben als jemand leben, der ich nicht bin.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin in den Partner meiner besten Freundin verliebt. Würde nie handeln, aber die Gefühle sind da. Jedes Mal wenn ich sie zusammen sehe, tut es weh.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mit 40 habe ich erfahren, dass ich adoptiert bin. Mein ganzes Leben war eine Lüge. Ich weiß nicht mehr, wer ich bin.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mein Hund ist mein einziger Freund. Ich rede mehr mit ihm als mit Menschen. Er ist 12 und ich fürchte den Tag, an dem er geht.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin komplett ausgebrannt. Zwei Jahre Pandemie, dann Pflegekraft für meine Eltern. Ich habe nichts mehr zu geben.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mein Bruder schuldet mir 10.000 Euro und tut so, als wäre nichts. Die Familie sagt, ich soll es vergessen, weil er es schwer hat. Und ich?",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich habe eine Affäre mit einem verheirateten Mann. Ich weiß, dass es falsch ist. Ich kann nicht aufhören. Ich hasse mich dafür.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mein Kind wurde in der Schule gemobbt und ich habe versagt, es zu schützen. Die Schuldgefühle fressen mich auf.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin chronisch krank und niemand glaubt mir, weil ich nicht krank aussehe. Die Invalidenversicherung lehnt jeden Antrag ab.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Seit der Trennung habe ich keinen Sex mehr gehabt. Drei Jahre jetzt. Ich vermisse Intimität, aber die Dating-Welt erschreckt mich.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mein Vater hat mir als Kind wehgetan. Nie jemandem erzählt. Er ist jetzt alt und gebrechlich und alle erwarten, dass ich mich um ihn kümmere.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich habe heute erfahren, dass ich nicht befördert werde. Der Kollege, der weniger leistet aber besser networkt, hat den Job bekommen.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Meine Schwiegermutter hasst mich und mein Mann verteidigt mich nie. Nach zehn Jahren Ehe frage ich mich, ob es das wert ist.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich bin 50 und fühle mich unsichtbar. Für Männer, für Arbeitgeber, für die Gesellschaft. Als ob ich nicht mehr existiere.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Die graue Wolke ist zurück. Ich dachte, es wäre vorbei, aber hier bin ich wieder. Weinend im Bett um 14 Uhr an einem Dienstag.",
+    "label": "depression"
+  },
+  {
+    "text": "Ich habe Angst vor Autounfällen. Jedes Mal wenn ich fahre, stelle ich mir Crashs vor. Ich vermeide das Auto mittlerweile komplett.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Seit drei Tagen wie auf Wolken. Meine Freundin sagt, ich mache ihr Angst. Vielleicht bin ich ein bisschen außer Kontrolle.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich war gestern Nacht auf der Brücke. Eine Stunde lang. Nur geschaut. Ich bin nicht gesprungen, aber ich habe darüber nachgedacht.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "DNA-Test ergab: Meine Tochter ist nicht biologisch von mir. Nach zehn Jahren. Ich habe es niemandem gesagt. Sie ist trotzdem mein Kind, aber was tue ich jetzt?",
+    "label": "offmychest"
+  },
+  {
+    "text": "Das Wochenende dehnt sich endlos. Keine Struktur, keine Ablenkung. Nur ich und diese erdrückende Stille.",
+    "label": "depression"
+  },
+  {
+    "text": "Mein Herz hat gerade ausgesetzt. Kurz nur, aber jetzt bin ich überzeugt, dass ich einen Herzstillstand bekomme. Zu viel Angst zum Schlafen.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Von Weltherrschaft zu Vernichtungswunsch in drei Tagen. Mein Psychiater sagt, gemischte Episoden sind am schwersten. Kann bestätigen.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich habe meine Tabletten gesammelt. Nicht viele noch, aber es werden mehr. Ich weiß noch nicht, wann oder ob. Aber die Option zu haben hilft seltsamerweise.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich habe vor zwei Jahren alle meine Freunde ghostet. Ohne Erklärung, einfach verschwunden. Jetzt bin ich einsam, aber zu beschämt um mich zu melden.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich wache morgens auf und bin enttäuscht, dass ich aufgewacht bin. Nicht aktiv suizidal, aber passive Todessehnsucht. Ist das besser oder schlimmer?",
+    "label": "depression"
+  },
+  {
+    "text": "Der Gedanke an meine eigene Geburtstagsparty macht mich krank. Zu viele Menschen, zu viel Aufmerksamkeit. Ich überlege, mich krank zu melden.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Drei Kreditkarten in einer Woche gesprengt. Das High ist vorbei und die Realität holt mich ein. Wie erkläre ich das meiner Frau?",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich bin am Krankenhaus vorbeigefahren. Extra. Der Teil von mir, der leben will, macht solche Sachen. Aber er wird leiser.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich sage meiner Familie, ich esse vegan aus ethischen Gründen. In Wahrheit habe ich eine Essstörung entwickelt und das ist die einfachste Tarnung.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mein Leben ist auf Autopilot. Aufstehen, funktionieren, schlafen, wiederholen. Keine Freude, keine Trauer. Nur existieren.",
+    "label": "depression"
+  },
+  {
+    "text": "Prüfung morgen und ich kann nicht lernen. Die Angst zu versagen lähmt mich so sehr, dass ich nur dastarre. Ein Teufelskreis.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Ich habe spontan einen Hund gekauft. Und ein Auto. An einem Tag. Mein Konto schreit, aber ich fühle mich lebendig.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Die Nacht ist am gefährlichsten. Wenn alles still ist und die Gedanken übernehmen. Heute Nacht war knapp.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Mein Kind fragt, warum Papa nicht mehr da ist. Ich kann nicht erklären, dass er uns für eine Jüngere verlassen hat. Wie formuliert man das kindgerecht?",
+    "label": "offmychest"
+  },
+  {
+    "text": "Ich sitze seit drei Stunden vor dem leeren Dokument. Die Bachelorarbeit schreibt sich nicht von allein. Mein Kopf ist leer.",
+    "label": "depression"
+  },
+  {
+    "text": "Der Aufzug steckt fest und ich hyperventiliere. Nicht genug Luft. Die Wände kommen näher. Ich werde hier sterben.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Meine Medikamente machen mich zum Zombie. Keine Tiefs mehr, aber auch keine Hochs. Ist das Leben? Oder nur Überleben?",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich habe heute meinen Abschiedsbrief nochmal gelesen. Er ist gut. Bereit. Ich lege ihn zurück in die Schublade. Noch nicht heute.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Meine Eltern haben sich scheiden lassen und beide erwarten, dass ich Partei ergreife. Ich bin 35 und fühle mich wie ein zerrissenes Kind.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Mein Therapeut ist im Urlaub und ich merke erst jetzt, wie abhängig ich von diesen Sitzungen bin. Zwei Wochen noch. Ich weiß nicht, ob ich das schaffe.",
+    "label": "depression"
+  },
+  {
+    "text": "Jedes Zucken in meinem Körper ist ein Anzeichen für ALS. Google sagt, ich habe alle Symptome. Der Arzt sagt Angststörung. Ich glaube Google.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Gestern depressiv, heute manisch. Mein Gehirn kann sich nicht entscheiden. Ich auch nicht.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Ich habe meine Lebensversicherung überprüft. Sie zahlt nicht bei Suizid, außer nach zwei Jahren. Die zwei Jahre sind vorbei.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Ich lächle so viel bei der Arbeit, dass mein Gesicht wehtut. Niemand ahnt, dass ich innerlich schreie.",
+    "label": "offmychest"
+  }
+]

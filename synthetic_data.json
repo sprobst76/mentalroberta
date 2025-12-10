@@ -1,0 +1,402 @@
+[
+  {
+    "text": "I feel so empty inside lately. Nothing brings me joy anymore. I used to love painting and hiking, but now I can barely get out of bed. Everything feels gray and meaningless.",
+    "label": "depression"
+  },
+  {
+    "text": "It's been three weeks since I last felt happy. I'm going through the motions at work but inside I feel hollow. My friends keep asking if I'm okay and I just lie and say I'm fine.",
+    "label": "depression"
+  },
+  {
+    "text": "I slept 14 hours yesterday and still feel exhausted. The thought of doing anything productive seems impossible. I've been eating less and my appetite is completely gone.",
+    "label": "depression"
+  },
+  {
+    "text": "Everyone around me seems to have their life together while I'm falling apart. I feel like such a failure. I don't know why I can't just be normal like everyone else.",
+    "label": "depression"
+  },
+  {
+    "text": "I've been isolating myself from everyone. Even texting back feels like too much effort. The weight on my chest never goes away. I just want to feel something again.",
+    "label": "depression"
+  },
+  {
+    "text": "Lost my job last month and haven't told anyone. I just sit at home pretending to go to work. The shame is overwhelming. I don't see the point in trying anymore.",
+    "label": "depression"
+  },
+  {
+    "text": "My therapist says I'm making progress but I don't feel it. Every day is the same gray fog. I smile on the outside but inside I'm screaming. When does it get better?",
+    "label": "depression"
+  },
+  {
+    "text": "I used to be such a motivated person. Now I can barely shower. My room is a mess and I just don't care. I feel disconnected from everything and everyone.",
+    "label": "depression"
+  },
+  {
+    "text": "Crying at random times for no reason. At work, in the car, in the shower. I don't even know why anymore. The tears just come and I can't stop them.",
+    "label": "depression"
+  },
+  {
+    "text": "Another sleepless night staring at the ceiling. My mind won't stop with the negative thoughts. I'm so tired but sleep won't come. This cycle is exhausting.",
+    "label": "depression"
+  },
+  {
+    "text": "I feel worthless. Like the world would be the same or better without me. I'm just taking up space and oxygen. Nobody would really miss me if I disappeared.",
+    "label": "depression"
+  },
+  {
+    "text": "The medication isn't working. Two months now and I still feel the same emptiness. Maybe I'm just broken beyond repair. Maybe this is just who I am now.",
+    "label": "depression"
+  },
+  {
+    "text": "I can't concentrate on anything. Started reading the same paragraph five times and gave up. My brain feels foggy and slow. Simple tasks feel monumental.",
+    "label": "depression"
+  },
+  {
+    "text": "Missed another family dinner because I couldn't face anyone. Making up excuses is exhausting but going out feels impossible. I'm becoming a ghost in my own life.",
+    "label": "depression"
+  },
+  {
+    "text": "I look back at old photos and don't recognize the happy person in them. Where did that person go? I want them back but I don't know how to find them.",
+    "label": "depression"
+  },
+  {
+    "text": "My heart is racing and I can't breathe. I'm in a meeting and feel like I'm dying. Everyone is looking at me. I need to get out but I can't move.",
+    "label": "anxiety"
+  },
+  {
+    "text": "I've checked if I locked the door five times already. What if I forgot? What if someone breaks in? I know it's irrational but I can't stop the thoughts.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Job interview tomorrow and I haven't slept in two days. My mind keeps playing out all the ways it could go wrong. What if I freeze? What if they hate me?",
+    "label": "anxiety"
+  },
+  {
+    "text": "Every time my phone rings I have a mini panic attack. What if it's bad news? What if something happened to someone I love? I've started avoiding calls entirely.",
+    "label": "anxiety"
+  },
+  {
+    "text": "I had another panic attack at the grocery store. Had to leave my cart and run to my car. It's getting worse. Now I'm scared to go shopping at all.",
+    "label": "anxiety"
+  },
+  {
+    "text": "My chest feels tight constantly. I've been to the ER three times thinking I was having a heart attack. Doctors say it's anxiety but it feels so real.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Can't stop worrying about my health. Every headache is a brain tumor, every stomach ache is cancer. I Google symptoms for hours and it only makes it worse.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Social situations terrify me. The thought of small talk makes me nauseous. I spend hours analyzing every conversation, replaying all the stupid things I said.",
+    "label": "anxiety"
+  },
+  {
+    "text": "I woke up at 3am with that familiar dread in my stomach. The worries started immediately. Money, work, relationships. My mind won't let me rest.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Going to restaurants is a nightmare. What if I choke? What if I need to throw up? I always sit near the exit and hardly eat anything. It's exhausting.",
+    "label": "anxiety"
+  },
+  {
+    "text": "My hands won't stop shaking. I'm presenting to the team in an hour and I feel like I'm going to pass out. Why can't I just be normal about this?",
+    "label": "anxiety"
+  },
+  {
+    "text": "I've started avoiding driving on highways. Too many cars, too fast, too dangerous. The what-ifs play on loop. My world is getting smaller every day.",
+    "label": "anxiety"
+  },
+  {
+    "text": "The flight is in two days and I'm already spiraling. What if the plane crashes? What if I have a panic attack at 30,000 feet? I've almost cancelled three times.",
+    "label": "anxiety"
+  },
+  {
+    "text": "Every time I send an email I reread it twenty times. What if there's a typo? What if they misunderstand? What if they think I'm incompetent? It takes hours to send anything.",
+    "label": "anxiety"
+  },
+  {
+    "text": "I feel like everyone is judging me constantly. In the elevator, on the street, at work. Their eyes follow me. I know it's not true but the feeling won't go away.",
+    "label": "anxiety"
+  },
+  {
+    "text": "This week has been insane. I slept maybe 8 hours total in 5 days but I feel amazing. Started three new projects and I'm going to revolutionize everything. Watch me.",
+    "label": "bipolar"
+  },
+  {
+    "text": "I spent $5000 on equipment for a hobby I started yesterday. My bank account is empty but I don't care. I've never felt more alive and creative in my life.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Last month I couldn't get out of bed. Now I've cleaned my entire apartment, started a business, and signed up for a marathon. The energy is incredible but scary.",
+    "label": "bipolar"
+  },
+  {
+    "text": "My thoughts are racing so fast I can barely keep up. I'm talking a mile a minute and people keep giving me weird looks. They just don't understand my vision.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Three days ago I was ready to end it all. Today I feel invincible. These swings are exhausting. I never know which version of me will wake up tomorrow.",
+    "label": "bipolar"
+  },
+  {
+    "text": "I quit my job in a moment of what I thought was clarity. Now the high is fading and I'm terrified. Why do I keep sabotaging my life like this?",
+    "label": "bipolar"
+  },
+  {
+    "text": "The medication makes me feel flat. I miss my highs even though I know they're dangerous. At least when I was manic I felt something. Now I'm just existing.",
+    "label": "bipolar"
+  },
+  {
+    "text": "I went on a road trip last week on a whim. Drove 800 miles with no plan or destination. It felt amazing at the time but now I'm crashing hard.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Friends say they don't know who I am anymore. Some days I'm the life of the party, other days I can't leave my room. I don't know who I am either.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Started writing a novel at 2am and finished 10,000 words by morning. My fingers are cramping but my mind won't stop. I haven't eaten but food seems irrelevant.",
+    "label": "bipolar"
+  },
+  {
+    "text": "The crash is coming. I can feel it. These past weeks of productivity and happiness are about to turn into weeks of darkness. I'm trying to prepare but you never really can.",
+    "label": "bipolar"
+  },
+  {
+    "text": "I've been diagnosed for five years and I still can't predict my episodes. Lithium helps but I still cycle. The stability everyone else has seems like a fantasy.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Made a decision during a high that destroyed my marriage. She couldn't handle the mood swings anymore. I don't blame her. I can't even handle myself.",
+    "label": "bipolar"
+  },
+  {
+    "text": "Hypomanic episodes feel like superpowers until they don't. I'm more creative, more social, need less sleep. Then the mania tips over or I crash into depression.",
+    "label": "bipolar"
+  },
+  {
+    "text": "My psychiatrist adjusted my meds again. Third time this year. It's like trying to hit a moving target. I just want to feel stable for more than a few weeks.",
+    "label": "bipolar"
+  },
+  {
+    "text": "I can't do this anymore. I've been holding on for so long but I'm so tired. I don't want to wake up tomorrow. I just want the pain to stop.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I've written the letters. They're in my drawer. I haven't decided when but I know it's coming. I'm not asking for help. I just needed to tell someone.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Everyone says it gets better but it's been years and nothing has changed. I'm 30 years old and I've felt this way since I was 15. I'm so tired of fighting.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I've been researching methods. I know I shouldn't but I can't stop. The thoughts are constant now. It's like they've taken over my brain completely.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "Tonight feels different. I'm calm for the first time in months. I've made peace with everything. I just wanted to post here one last time.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I'm not suicidal but I wouldn't mind if I didn't wake up tomorrow. Does that make sense? I don't want to actively do anything but I'd welcome the end.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "The only thing stopping me is my dog. He wouldn't understand where I went. As soon as he's gone, so am I. That's the only thing keeping me here.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I'm a burden to everyone. My family would grieve but eventually they'd realize their lives are easier without me draining their resources and energy.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I've tried everything. Therapy, medication, exercise, meditation. Nothing works. At some point you have to accept that some things can't be fixed.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "The intrusive thoughts are constant now. Every bridge, every tall building, every bottle of pills. My brain won't stop showing me options.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I called the hotline last night. They were nice but it didn't help. How can a stranger on the phone understand what I'm going through? No one can.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I'm posting here because I have no one else to tell. My family thinks I'm fine. My friends don't know the real me. I feel completely alone in this.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I tried once before and failed. Sometimes I'm grateful, sometimes I'm disappointed. Today is a disappointed day. I'm getting my affairs in order.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "What's the point of living when every day is just pain? I've forgotten what happiness feels like. I'm exhausted from pretending everything is fine.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I don't want to die, I just don't want to exist. There's a difference. I wish there was a pause button where I could just stop being for a while.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I just need to vent. My boss is the worst and I can't quit because I need this job. Today she criticized my work in front of everyone. I wanted to disappear.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I've been lying to my parents for months about having a job. I'm too ashamed to tell them I was fired. Every day the lie gets heavier.",
+    "label": "offmychest"
+  },
+  {
+    "text": "My best friend of 15 years just told me she's been sleeping with my ex. I feel so betrayed. I don't know who to trust anymore.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I love my kids but sometimes I regret becoming a parent. There, I said it. I feel like a terrible person for even thinking this but it's the truth.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I got accepted to my dream school today but I can't tell anyone because my mom just got diagnosed with cancer. I feel guilty for being happy.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Sometimes I fantasize about just disappearing. Not hurting myself, just starting over somewhere new where nobody knows me. A clean slate sounds so appealing.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I hate my body. I've hated it for as long as I can remember. No matter how much I exercise or diet, I never feel good enough. I'm so tired of this battle.",
+    "label": "offmychest"
+  },
+  {
+    "text": "My wedding is in two months and I'm not sure I love him anymore. Everyone has already bought plane tickets. I feel trapped by expectations.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I grew up poor and now I make six figures but I still feel like an impostor. Like any day now someone will realize I don't belong and take it all away.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I'm the family therapist. Everyone comes to me with their problems. But who do I go to? I'm drowning and nobody notices because I'm supposed to be the strong one.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I cheated on my partner three years ago. I never told anyone. The guilt is eating me alive but telling the truth would destroy everything we've built.",
+    "label": "offmychest"
+  },
+  {
+    "text": "My grandmother died last week and I feel nothing. Everyone at the funeral was crying and I just felt empty. What's wrong with me? Am I a psychopath?",
+    "label": "offmychest"
+  },
+  {
+    "text": "I'm 35 and still don't know what I want to do with my life. Everyone around me has careers and families. I feel stuck and behind. Time is running out.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I've been sober for 90 days today. Nobody knows I was ever an alcoholic. I had to tell someone. This is the hardest thing I've ever done.",
+    "label": "offmychest"
+  },
+  {
+    "text": "My husband doesn't know I read his texts. He's been messaging his ex for months. Nothing inappropriate but the secrecy hurts. I don't know what to do.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I failed the bar exam for the third time. I've spent $100k on law school and I can't even become a lawyer. I feel like a complete failure.",
+    "label": "offmychest"
+  },
+  {
+    "text": "My roommate keeps eating my food and denying it. It's such a small thing but it's driving me crazy. I can't afford to move out. I'm stuck.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I'm secretly relieved my dad is dying. He was abusive my whole childhood. Everyone expects me to be devastated. Instead I feel free. Is that evil?",
+    "label": "offmychest"
+  },
+  {
+    "text": "I've been pretending to work from home for months. I do maybe 2 hours of real work a day. I'm terrified of getting caught but I can't seem to stop.",
+    "label": "offmychest"
+  },
+  {
+    "text": "My therapist broke confidentiality and told my mom about my sessions. I feel so betrayed. That was the one safe space I had and now it's ruined.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Today marks five years since my miscarriage. Nobody remembers but me. I still think about the baby every day. What they would have looked like, who they would have become.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I'm transgender but I'll never come out. My family is too conservative. I'll live my whole life as someone I'm not. It's suffocating but it's the only option.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I'm in love with my best friend's partner. I would never act on it but the feelings are there. Every time I see them together it hurts.",
+    "label": "offmychest"
+  },
+  {
+    "text": "I just found out I'm adopted at 40 years old. My whole life has been a lie. I don't know who I am anymore. Everything I thought I knew is wrong.",
+    "label": "offmychest"
+  },
+  {
+    "text": "My dog is my only friend. I talk to him more than I talk to any human. He's 12 now and I know I don't have much time left with him. I'm dreading the day.",
+    "label": "offmychest"
+  },
+  {
+    "text": "The darkness is back. I thought I was better but here I am again, crying in bed at 2pm on a Tuesday. The cycle never really ends, does it?",
+    "label": "depression"
+  },
+  {
+    "text": "I keep having intrusive thoughts about car accidents. Every time I drive I imagine crashing. I've started avoiding driving but I can't avoid it forever.",
+    "label": "anxiety"
+  },
+  {
+    "text": "I've been on top of the world for three days straight. No need for sleep. My girlfriend says I'm scaring her. Maybe I am a little out of control.",
+    "label": "bipolar"
+  },
+  {
+    "text": "I stood on the bridge for an hour last night. Just looking at the water. I didn't jump but I thought about it. Really thought about it.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I found out my daughter isn't biologically mine after 10 years. DNA test confirmed it. I haven't told anyone. She's still my daughter but I don't know what to do.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Seasonal depression hitting hard this winter. I haven't seen the sun in weeks and my mood is in the gutter. Just surviving until spring at this point.",
+    "label": "depression"
+  },
+  {
+    "text": "My heart skipped a beat and now I'm convinced I'm dying. Dr Google says it could be cardiac arrest. I'm too scared to go to sleep. What if I don't wake up?",
+    "label": "anxiety"
+  },
+  {
+    "text": "Cycling between wanting to take over the world and wanting to disappear from it. My psychiatrist says mixed episodes are the hardest to treat. I believe her.",
+    "label": "bipolar"
+  },
+  {
+    "text": "I saved up my pills. About a month's worth now. I'm not sure when or if I'll use them. Having them there is strangely comforting. Like having an exit strategy.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I ghosted my entire friend group two years ago. No explanation, just disappeared. Now I'm lonely but too embarrassed to reach back out.",
+    "label": "offmychest"
+  },
+  {
+    "text": "Every morning I wake up disappointed that I woke up at all. I go through the motions but I'm not really living. Just existing until I stop.",
+    "label": "depression"
+  },
+  {
+    "text": "The thought of going to my own birthday party is making me nauseous. Too many people, too much attention. I'm thinking of cancelling and saying I'm sick.",
+    "label": "anxiety"
+  },
+  {
+    "text": "I maxed out three credit cards in a week during my last episode. The shame of dealing with the debt keeps me in bed now that I've crashed.",
+    "label": "bipolar"
+  },
+  {
+    "text": "I drove past the hospital on purpose today. The part of me that wants to be saved keeps doing things like that. But the bigger part just wants it to end.",
+    "label": "suicidewatch"
+  },
+  {
+    "text": "I told my family I'm vegan for ethical reasons. Really I just developed an eating disorder and this is the easiest way to hide it.",
+    "label": "offmychest"
+  }
+]

@@ -1,0 +1,95 @@
+# ------------------------------
+# Python & ML Projekt .gitignore
+# ------------------------------
+
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+.history/
+
+# Logs
+*.log
+logs/
+*.out
+
+# OS / IDE metadata
+.DS_Store
+Thumbs.db
+
+# Credentials / Tokens
+*.key
+*.pem
+*.p12
+*.crt
+*.der
+*.credentials
+*.env.local
+secrets.json
+
+# Environment / dotenv files
+.env*
+*.env
+
+# Model files & large binaries
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.h5
+*.onnx
+*.npz
+*.pkl
+*.joblib
+*.hdf5
+
+# Dataset folders
+data/
+datasets/
+cache/
+cached/
+temp/
+tmp/
+
+# Hugging Face
+huggingface/
+hf_c_
