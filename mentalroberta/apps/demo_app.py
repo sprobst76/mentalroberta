@@ -11,6 +11,13 @@ import re
 import uuid
 from datetime import datetime
 from pathlib import Path
+import sys
+
+# Ensure repository root is on sys.path when running via streamlit
+ROOT_DIR = Path(__file__).resolve().parents[2]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
