@@ -77,14 +77,14 @@ def quantize_onnx(onnx_path: Path, quantized_path: Path) -> Optional[Path]:
         return None
 
     quantized_path.parent.mkdir(parents=True, exist_ok=True)
-    quantize_dynamic(
-        model_input=onnx_path.as_posix(),
-        model_output=quantized_path.as_posix(),
-        optimize_model=True,
-        per_channel=False,
-        reduce_range=True,
-        weight_type=QuantType.QInt8,
-    )
+    # Older onnxruntime versions do not support optimize_model/reduce_range args.
+    quantize_kwargs = {
+        "model_input": onnx_path.as_posix(),
+        "model_output": quantized_path.as_posix(),
+        "weight_type": QuantType.QInt8,
+        "per_channel": False,
+    }
+    quantize_dynamic(**quantize_kwargs)
     print(f"✅ Quantized model written to: {quantized_path}")
     return quantized_path
 
@@ -95,7 +95,7 @@ def parse_args():
     parser.add_argument("--output", type=Path, required=True, help="Output ONNX path")
     parser.add_argument("--model_name", type=str, default="deepset/gbert-base", help="Base HF model name")
     parser.add_argument("--num_classes", type=int, default=5, help="Number of target classes")
-    parser.add_argument("--opset", type=int, default=13, help="ONNX opset version")
+    parser.add_argument("--opset", type=int, default=17, help="ONNX opset version (14+ recommended for SDPA)")
     parser.add_argument("--max_length", type=int, default=256, help="Sequence length for dynamic axes")
     parser.add_argument("--quantize", action="store_true", help="Also write an int8 quantized ONNX model")
     return parser.parse_args()
