@@ -315,7 +315,7 @@ def render_browser_component(text: str, model_url: str):
                 const top = probs.indexOf(Math.max(...probs));
                 const lines = probs.map((p,i)=>`${{LABELS[i]}}: ${{(p*100).toFixed(1)}}%`);
                 document.getElementById('browser-out').innerHTML = `
-                    <div><b>Vorhersage:</b> ${{LABELS[top]}} (${(probs[top]*100).toFixed(1)}%)</div>
+                    <div><b>Vorhersage:</b> ${{LABELS[top]}} (${{(probs[top]*100).toFixed(1)}}%)</div>
                     <div style="margin-top:6px;">${{lines.join('<br>')}}</div>
                 `;
             }} catch (err) {{
