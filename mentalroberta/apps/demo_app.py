@@ -371,12 +371,7 @@ def main():
         unsafe_allow_html=True
     )
     
-    backend_options = ["ONNX (Server-CPU)", "PyTorch (Server)"]
-    backend = st.sidebar.selectbox(
-        "Inference-Backend",
-        backend_options,
-        index={"onnx": 0, "pytorch": 1}.get(DEFAULT_BACKEND, 0),
-    )
+    backend = "ONNX (Server-CPU)" if DEFAULT_BACKEND == "onnx" else "PyTorch (Server)"
 
     # Backend laden
     if backend == "PyTorch (Server)":
