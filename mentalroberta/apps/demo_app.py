@@ -5,8 +5,11 @@ Interaktive Demo für Mental-Health-Textklassifikation
 Ausführen mit: streamlit run mentalroberta/apps/demo_app.py
 """
 
+import json
 import os
 import re
+import uuid
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -62,6 +65,7 @@ ONNX_PATH = Path("checkpoints/model.onnx")
 ONNX_QUANT_PATH = Path("checkpoints/model.int8.onnx")
 DEFAULT_BACKEND = os.getenv("MENTALROBERTA_BACKEND", "pytorch")
 ACCESS_TOKEN = os.getenv("MENTALROBERTA_APP_TOKEN")
+USAGE_LOG_PATH = Path(os.getenv("MENTALROBERTA_USAGE_LOG", "checkpoints/usage.log"))
 
 
 @st.cache_resource
@@ -170,6 +174,33 @@ def predict_onnx(text, session, tokenizer):
     caps_tensor = torch.from_numpy(capsule_outputs[0])
     caps_lengths = torch.sqrt((caps_tensor ** 2).sum(dim=-1)).numpy()
     return probs, caps_lengths
+
+
+def get_session_id():
+    if "session_id" not in st.session_state:
+        st.session_state["session_id"] = uuid.uuid4().hex
+    return st.session_state["session_id"]
+
+
+def log_usage(event: str, backend: str, text_len: int, success: bool, is_trained: bool):
+    if not USAGE_LOG_PATH:
+        return
+    try:
+        USAGE_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        record = {
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "session": get_session_id(),
+            "event": event,
+            "backend": backend,
+            "text_len": text_len,
+            "success": success,
+            "trained": is_trained,
+        }
+        with open(USAGE_LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(json.dumps(record) + "\n")
+    except Exception:
+        # Don't break the UI due to logging issues
+        pass
 
 
 def create_probability_chart(probs):
@@ -378,6 +409,13 @@ def main():
                 else:
                     st.warning("Client-Modus aktiv: Bitte ONNX-Modell herunterladen und lokal im Browser/Client ausführen.")
                     probs, caps_lengths = None, None
+                log_usage(
+                    event="analyze",
+                    backend=backend,
+                    text_len=len(input_text),
+                    success=probs is not None,
+                    is_trained=is_trained,
+                )
             
             if probs is not None:
                 # Top-Vorhersage

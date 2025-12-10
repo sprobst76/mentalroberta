@@ -54,6 +54,7 @@ streamlit run mentalroberta/apps/demo_app.py
 ```
 
 Setze optional `MENTALROBERTA_APP_TOKEN`, dann muss die Demo per URL-Parameter `?token=...` oder Eingabe freigeschaltet werden.
+Setze optional `MENTALROBERTA_USAGE_LOG` (Dateipfad), um Aufrufe anonym zu protokollieren (Zeit, Session-ID, Backend, Textlänge, Erfolg).
 
 ### 4. Export to ONNX (optional, for client/offline inference)
 
