@@ -61,6 +61,7 @@ CHECKPOINT_PATH = Path("checkpoints/best_model.pt")
 ONNX_PATH = Path("checkpoints/model.onnx")
 ONNX_QUANT_PATH = Path("checkpoints/model.int8.onnx")
 DEFAULT_BACKEND = os.getenv("MENTALROBERTA_BACKEND", "pytorch")
+ACCESS_TOKEN = os.getenv("MENTALROBERTA_APP_TOKEN")
 
 
 @st.cache_resource
@@ -223,6 +224,17 @@ def create_capsule_viz(caps_lengths):
 
 
 def main():
+    # Optional Access Gate (simple shared token)
+    if ACCESS_TOKEN:
+        token = st.session_state.get("access_token") or st.query_params.get("token", [None])[0]
+        if token != ACCESS_TOKEN:
+            st.title("🔒 Zugriff beschränkt")
+            token_input = st.text_input("Access Token eingeben", type="password")
+            if st.button("Freischalten") and token_input == ACCESS_TOKEN:
+                st.session_state["access_token"] = ACCESS_TOKEN
+                st.experimental_rerun()
+            st.stop()
+
     st.markdown('<div class="main-header">🧠 MentalRoBERTa-Caps</div>', unsafe_allow_html=True)
     st.markdown(
         '<div class="sub-header">Capsule-Enhanced Transformer für Mental-Health-Klassifikation<br>'

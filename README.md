@@ -53,6 +53,8 @@ python -m mentalroberta.tools.quick_test
 streamlit run mentalroberta/apps/demo_app.py
 ```
 
+Setze optional `MENTALROBERTA_APP_TOKEN`, dann muss die Demo per URL-Parameter `?token=...` oder Eingabe freigeschaltet werden.
+
 ### 4. Export to ONNX (optional, for client/offline inference)
 
 ```bash
