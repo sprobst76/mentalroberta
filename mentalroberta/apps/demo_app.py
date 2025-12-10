@@ -75,6 +75,7 @@ DEFAULT_BACKEND = os.getenv("MENTALROBERTA_BACKEND", "pytorch")
 ACCESS_TOKEN = os.getenv("MENTALROBERTA_APP_TOKEN")
 USAGE_LOG_PATH = Path(os.getenv("MENTALROBERTA_USAGE_LOG", "checkpoints/usage.log"))
 BROWSER_ONNX_URL = os.getenv("MENTALROBERTA_BROWSER_ONNX_URL", "/static/model.onnx")
+BROWSER_TOKENIZER_MODEL = os.getenv("MENTALROBERTA_BROWSER_TOKENIZER", BASE_MODEL_NAME)
 
 
 @st.cache_resource
@@ -292,7 +293,7 @@ def render_browser_component(text: str, model_url: str):
 
         const TEXT = {json.dumps(text)};
         const MODEL_URL = "{model_url}";
-        const TOKENIZER_MODEL = "{BASE_MODEL_NAME}";
+        const TOKENIZER_MODEL = "{BROWSER_TOKENIZER_MODEL}";
         const LABELS = {labels_js};
 
         (async () => {{

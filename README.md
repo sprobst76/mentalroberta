@@ -57,6 +57,7 @@ Setze optional `MENTALROBERTA_APP_TOKEN`, dann muss die Demo per URL-Parameter `
 Setze optional `MENTALROBERTA_USAGE_LOG` (Dateipfad), um Aufrufe anonym zu protokollieren (Zeit, Session-ID, Backend, Textlänge, Erfolg).
 Setze optional `MENTALROBERTA_BASE_MODEL`, um das Basis-HF-Modell der Demo zu überschreiben (Default: deepset/gbert-base).
 Setze optional `MENTALROBERTA_BROWSER_ONNX_URL`, um den Pfad für den Browser-Inferenz-Download zu überschreiben (Default: /static/model.onnx). Backend „ONNX (Browser)“ lädt das Modell direkt im Client (erfordert onnxruntime-web/CDN).
+Setze optional `MENTALROBERTA_BROWSER_TOKENIZER` (z.B. `Xenova/bert-base-multilingual-cased`) für das Browser-Backend, falls dein Standardmodell im Browser nicht verfügbar ist; benötigt Internetzugang zu Hugging Face/CDN.
 
 ### 4. Export to ONNX (optional, for client/offline inference)
 
