@@ -67,8 +67,8 @@ Thumbs.db
 secrets.json
 
 # Environment / dotenv files
-.env*
-*.env
+.env
+.env.local
 
 # Model files & large binaries
 *.pt
