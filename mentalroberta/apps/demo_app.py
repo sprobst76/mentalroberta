@@ -71,7 +71,7 @@ BASE_MODEL_NAME = os.getenv("MENTALROBERTA_BASE_MODEL", DEFAULT_MODEL)
 CHECKPOINT_PATH = Path("checkpoints/best_model.pt")
 ONNX_PATH = Path("checkpoints/model.onnx")
 ONNX_QUANT_PATH = Path("checkpoints/model.int8.onnx")
-DEFAULT_BACKEND = os.getenv("MENTALROBERTA_BACKEND", "pytorch")
+DEFAULT_BACKEND = os.getenv("MENTALROBERTA_BACKEND", "onnx")  # default to ONNX (CPU) for low memory
 ACCESS_TOKEN = os.getenv("MENTALROBERTA_APP_TOKEN")
 USAGE_LOG_PATH = Path(os.getenv("MENTALROBERTA_USAGE_LOG", "checkpoints/usage.log"))
 BROWSER_ONNX_URL = os.getenv("MENTALROBERTA_BROWSER_ONNX_URL", "/static/model.onnx")
@@ -349,11 +349,11 @@ def main():
         unsafe_allow_html=True
     )
     
-    backend_options = ["PyTorch (Server)", "ONNX (Server-CPU)", "ONNX (Client-Download)", "ONNX (Browser)"]
+    backend_options = ["ONNX (Server-CPU)", "PyTorch (Server)"]
     backend = st.sidebar.selectbox(
         "Inference-Backend",
         backend_options,
-        index={"pytorch": 0, "onnx": 1}.get(DEFAULT_BACKEND, 0),
+        index={"onnx": 0, "pytorch": 1}.get(DEFAULT_BACKEND, 0),
     )
 
     # Backend laden
@@ -372,32 +372,6 @@ def main():
         val_f1 = None
         epoch = None
         backend_label = "ONNX (CPU)"
-    elif backend == "ONNX (Client-Download)":
-        model = None
-        tokenizer = None
-        device = "client"
-        is_trained = ONNX_PATH.exists() or ONNX_QUANT_PATH.exists()
-        val_f1 = None
-        epoch = None
-        backend_label = "Client-ONNX"
-        onnx_session = None
-    else:  # ONNX (Browser)
-        model = None
-        tokenizer = None
-        device = "browser"
-        is_trained = ONNX_PATH.exists() or ONNX_QUANT_PATH.exists()
-        val_f1 = None
-        epoch = None
-        backend_label = "Browser-ONNX"
-        onnx_session = None
-
-    if backend == "ONNX (Browser)":
-        model_url = ensure_static_onnx()
-        if model_url is None:
-            st.error("Kein ONNX-Modell gefunden. Bitte zuerst exportieren.")
-            st.stop()
-    else:
-        model_url = None
 
     if backend == "ONNX (Server-CPU)" and onnx_session is None:
         st.error("ONNX-Backend nicht verfügbar. Bitte ONNX-Modell exportieren oder onnxruntime installieren.")
@@ -436,33 +410,7 @@ def main():
             st.success("✅ Trainiertes ONNX-Modell gefunden")
         else:
             st.warning("❌ Nicht trainiert!")
-        if backend == "ONNX (Client-Download)":
-            st.info("Dieses Backend führt keine Server-Inferenz aus. ONNX-Modell herunterladen und im Browser/Client verwenden.")
-            if ONNX_PATH.exists():
-                st.download_button(
-                    "ONNX herunterladen",
-                    ONNX_PATH.read_bytes(),
-                    file_name=ONNX_PATH.name,
-                    mime="application/octet-stream",
-                )
-            if ONNX_QUANT_PATH.exists():
-                st.download_button(
-                    "Quantisiertes ONNX herunterladen",
-                    ONNX_QUANT_PATH.read_bytes(),
-                    file_name=ONNX_QUANT_PATH.name,
-                    mime="application/octet-stream",
-                )
-            st.markdown("""
-            Beispiel-Client (onnxruntime-web):
-            ```js
-            import { InferenceSession } from 'onnxruntime-web';
-            const session = await InferenceSession.create('model.onnx');
-            // Tokenize Text mit z.B. @xenova/transformers, dann:
-            const outputs = await session.run({input_ids, attention_mask});
-            ```
-            """)
-        if backend == "ONNX (Browser)" and model_url:
-            st.info(f"Browser-ONNX aktiv. Modell wird über {model_url} geladen (erfordert Internet/CORS-fähige Bereitstellung).")
+        
     
     # Hauptinhalt
     col1, col2 = st.columns([1, 1])
