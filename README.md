@@ -59,6 +59,12 @@ Setze optional `MENTALROBERTA_BASE_MODEL`, um das Basis-HF-Modell der Demo zu ü
 Setze optional `MENTALROBERTA_BROWSER_ONNX_URL`, um den Pfad für den Browser-Inferenz-Download zu überschreiben (Default: /static/model.onnx). Backend „ONNX (Browser)“ lädt das Modell direkt im Client (erfordert onnxruntime-web/CDN).
 Setze optional `MENTALROBERTA_BROWSER_TOKENIZER` (z.B. `Xenova/bert-base-multilingual-cased`) für das Browser-Backend, falls dein Standardmodell im Browser nicht verfügbar ist; benötigt Internetzugang zu Hugging Face/CDN.
 
+### Memory Notes
+- ONNX-Backend (Default) hält eine einmal geladene Session im RAM; kleiner Footprint als PyTorch, kein kontinuierliches Wachstum erwartet.
+- PyTorch-Backend cached Modell/Tokenizer (GPU/CPU); Speicher wird erst nach Prozessneustart freigegeben. Bei knappen GPUs ggf. `MENTALROBERTA_BACKEND=onnx` nutzen.
+- Eingaben halten nur kurz RAM; keine Puffer, die pro Request wachsen.
+- Freien Speicher prüfen: Linux z.B. `free -h` oder `nvidia-smi` (GPU). Auslastung sinkt erst nach Neustart oder explizitem Freigeben.
+
 ### 4. Export to ONNX (optional, for client/offline inference)
 
 ```bash
