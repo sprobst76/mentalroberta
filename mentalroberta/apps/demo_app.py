@@ -9,7 +9,7 @@ import json
 import os
 import re
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 import sys
 
@@ -197,7 +197,7 @@ def log_usage(event: str, backend: str, text_len: int, success: bool, is_trained
     try:
         USAGE_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
         record = {
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "session": get_session_id(),
             "event": event,
             "backend": backend,
@@ -313,7 +313,7 @@ def render_browser_component(text: str, model_url: str):
                 const sum = exps.reduce((a,b)=>a+b,0);
                 const probs = exps.map(v => v / sum);
                 const top = probs.indexOf(Math.max(...probs));
-                const lines = probs.map((p,i)=>`${{LABELS[i]}}: ${(p*100).toFixed(1)}%`);
+                const lines = probs.map((p,i)=>`${{LABELS[i]}}: ${{(p*100).toFixed(1)}}%`);
                 document.getElementById('browser-out').innerHTML = `
                     <div><b>Vorhersage:</b> ${{LABELS[top]}} (${(probs[top]*100).toFixed(1)}%)</div>
                     <div style="margin-top:6px;">${{lines.join('<br>')}}</div>
