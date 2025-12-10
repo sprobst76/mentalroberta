@@ -54,8 +54,10 @@ st.markdown("""
     .prediction-box {
         padding: 20px;
         border-radius: 10px;
-        background-color: #f0f2f6;
+        background: linear-gradient(135deg, #0f172a, #1f2937);
+        color: #e5e7eb;
         margin: 10px 0;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.25);
     }
 </style>
 """, unsafe_allow_html=True)
