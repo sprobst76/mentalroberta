@@ -12,7 +12,8 @@
 - Smoke test model wiring: `python -m mentalroberta.tools.quick_test` (verifies forward pass and capsule lengths).
 - Train on provided JSON: `python -m mentalroberta.training.train --data data/synthetic_data.json --epochs 3 --batch_size 8 --learning_rate 2e-5`.
 - Run inference on a single text (requires a checkpoint): `python -m mentalroberta.inference --checkpoint checkpoints/model.pt --text "Ich fühle mich so leer..."`.
-- Launch the demo (CPU/GPU both supported): `streamlit run mentalroberta/apps/demo_app.py`.
+- Export ONNX (for CPU/edge/browser): `python -m mentalroberta.tools.export_onnx --checkpoint checkpoints/best_model.pt --output checkpoints/model.onnx --quantize`.
+- Launch the demo (CPU/GPU both supported): `streamlit run mentalroberta/apps/demo_app.py` and choose the backend (PyTorch server, ONNX server-CPU, or ONNX download for client use).
 
 ## Coding Style & Naming Conventions
 - Follow PEP 8; 4-space indentation; prefer descriptive lower_snake_case for functions/vars and PascalCase for classes (e.g., `MentalHealthDataset`).

@@ -53,6 +53,17 @@ python -m mentalroberta.tools.quick_test
 streamlit run mentalroberta/apps/demo_app.py
 ```
 
+### 4. Export to ONNX (optional, for client/offline inference)
+
+```bash
+python -m mentalroberta.tools.export_onnx \
+  --checkpoint checkpoints/best_model.pt \
+  --output checkpoints/model.onnx \
+  --quantize
+```
+
+In the Streamlit app, pick the inference backend in the sidebar: PyTorch (server), ONNX (server CPU), or download the ONNX model for client-side use with `onnxruntime-web`.
+
 ---
 
 ## 🏗️ Architecture

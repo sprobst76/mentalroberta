@@ -590,26 +590,12 @@ labels_de = checkpoint['labels_de']
 
 ### 10.3 ONNX Export (für Deployment)
 
-```python
-import torch.onnx
-
-# Dummy-Input für Export
-dummy_input_ids = torch.randint(0, 30000, (1, 128)).to(DEVICE)
-dummy_attention_mask = torch.ones(1, 128).to(DEVICE)
-
-# Export
-torch.onnx.export(
-    model,
-    (dummy_input_ids, dummy_attention_mask),
-    "model.onnx",
-    input_names=['input_ids', 'attention_mask'],
-    output_names=['logits', 'capsule_outputs'],
-    dynamic_axes={
-        'input_ids': {0: 'batch_size', 1: 'sequence'},
-        'attention_mask': {0: 'batch_size', 1: 'sequence'}
-    }
-)
-print("✅ ONNX Export erfolgreich!")
+```bash
+# Export + Quantisierung (int8) in einem Schritt
+python -m mentalroberta.tools.export_onnx \
+  --checkpoint checkpoints/best_model.pt \
+  --output checkpoints/model.onnx \
+  --quantize
 ```
 
 ---

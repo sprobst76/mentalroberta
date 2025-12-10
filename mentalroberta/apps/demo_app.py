@@ -2,17 +2,20 @@
 MentalRoBERTa-Caps Demo-Anwendung (mit trainiertem Modell)
 Interaktive Demo für Mental-Health-Textklassifikation
 
-Ausführen mit: streamlit run demo_app.py
+Ausführen mit: streamlit run mentalroberta/apps/demo_app.py
 """
 
+import os
+import re
+from pathlib import Path
+
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 import torch
 import torch.nn.functional as F
-import plotly.express as px
-import plotly.graph_objects as go
-import pandas as pd
-import re
-from pathlib import Path
+
 from mentalroberta.model import MentalRoBERTaCaps
 
 # Seiten-Konfiguration
@@ -54,57 +57,65 @@ COLORS = ['#636EFA', '#EF553B', '#00CC96', '#AB63FA', '#FFA15A']
 
 # Konfiguration
 DEFAULT_MODEL = "deepset/gbert-base"
-CHECKPOINT_PATH = "checkpoints/best_model.pt"
+CHECKPOINT_PATH = Path("checkpoints/best_model.pt")
+ONNX_PATH = Path("checkpoints/model.onnx")
+ONNX_QUANT_PATH = Path("checkpoints/model.int8.onnx")
+DEFAULT_BACKEND = os.getenv("MENTALROBERTA_BACKEND", "pytorch")
 
 
 @st.cache_resource
-def load_trained_model():
-    """Lade das trainierte Modell"""
+def load_pytorch_model():
+    """Lade das trainierte Modell (PyTorch-Backend)"""
     try:
         from transformers import AutoTokenizer
-        
-        device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        
-        # Prüfe ob Checkpoint existiert
+
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+
         checkpoint_path = Path(CHECKPOINT_PATH)
-        
+        tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL)
+        model = MentalRoBERTaCaps(num_classes=5, num_layers=6, model_name=DEFAULT_MODEL)
+
+        is_trained = False
+        val_f1 = 0
+        epoch = 0
+
         if checkpoint_path.exists():
-            # Trainiertes Modell laden
-            
-            # Tokenizer laden
-            tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL)
-            
-            # Modell initialisieren
-            model = MentalRoBERTaCaps(
-                num_classes=5, 
-                num_layers=6, 
-                model_name=DEFAULT_MODEL
-            )
-            
-            # Checkpoint laden
             checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
-            model.load_state_dict(checkpoint['model_state_dict'])
-            
-            val_f1 = checkpoint.get('val_f1', 0)
-            epoch = checkpoint.get('epoch', 0)
-            
-            model.to(device)
-            model.eval()
-            
-            return model, tokenizer, device, True, val_f1, epoch
-        else:
-            # Kein Checkpoint - untrainiertes Modell
-            
-            tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL)
-            model = MentalRoBERTaCaps(num_classes=5, num_layers=6, model_name=DEFAULT_MODEL)
-            model.to(device)
-            model.eval()
-            
-            return model, tokenizer, device, False, 0, 0
-            
+            model.load_state_dict(checkpoint["model_state_dict"])
+            val_f1 = checkpoint.get("val_f1", 0)
+            epoch = checkpoint.get("epoch", 0)
+            is_trained = True
+
+        model.to(device)
+        model.eval()
+
+        return model, tokenizer, device, is_trained, val_f1, epoch
+
     except Exception as e:
-        st.error(f"Fehler beim Laden des Modells: {e}")
+        st.error(f"Fehler beim Laden des PyTorch-Modells: {e}")
         return None, None, None, False, 0, 0
+
+
+@st.cache_resource
+def load_onnx_session(onnx_path: Path):
+    """Lade ONNX-Session (CPU)."""
+    try:
+        import onnxruntime as ort
+        from transformers import AutoTokenizer
+    except Exception as exc:
+        st.error(f"ONNX-Backend nicht verfügbar: {exc}")
+        return None, None, None
+
+    if not onnx_path.exists():
+        st.error(f"ONNX-Modell nicht gefunden: {onnx_path}")
+        return None, None, None
+
+    sess_opts = ort.SessionOptions()
+    providers = ["CPUExecutionProvider"]
+    session = ort.InferenceSession(onnx_path.as_posix(), sess_options=sess_opts, providers=providers)
+    tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL)
+
+    return session, tokenizer, "cpu"
 
 
 def preprocess_text(text):
@@ -116,27 +127,48 @@ def preprocess_text(text):
     return text
 
 
-def predict(text, model, tokenizer, device):
-    """Vorhersage für Eingabetext"""
+def predict_pytorch(text, model, tokenizer, device):
+    """Vorhersage mit PyTorch-Backend"""
     clean_text = preprocess_text(text)
-    
+
     inputs = tokenizer(
         clean_text,
-        return_tensors='pt',
+        return_tensors="pt",
         max_length=256,
         truncation=True,
-        padding=True
+        padding=True,
     )
-    
-    input_ids = inputs['input_ids'].to(device)
-    attention_mask = inputs['attention_mask'].to(device)
-    
+
+    input_ids = inputs["input_ids"].to(device)
+    attention_mask = inputs["attention_mask"].to(device)
+
     with torch.no_grad():
         logits, capsule_outputs = model(input_ids, attention_mask)
         probs = F.softmax(logits, dim=-1)[0]
         caps_lengths = model.get_capsule_lengths(capsule_outputs)[0]
-    
+
     return probs.cpu().numpy(), caps_lengths.cpu().numpy()
+
+
+def predict_onnx(text, session, tokenizer):
+    """Vorhersage mit ONNX-Backend (CPU)"""
+    clean_text = preprocess_text(text)
+    inputs = tokenizer(
+        clean_text,
+        return_tensors="pt",
+        max_length=256,
+        truncation=True,
+        padding=True,
+    )
+    ort_inputs = {
+        "input_ids": inputs["input_ids"].numpy(),
+        "attention_mask": inputs["attention_mask"].numpy(),
+    }
+    logits, capsule_outputs = session.run(None, ort_inputs)
+    probs = torch.softmax(torch.from_numpy(logits[0]), dim=-1).numpy()
+    caps_tensor = torch.from_numpy(capsule_outputs[0])
+    caps_lengths = torch.sqrt((caps_tensor ** 2).sum(dim=-1)).numpy()
+    return probs, caps_lengths
 
 
 def create_probability_chart(probs):
@@ -198,20 +230,42 @@ def main():
         unsafe_allow_html=True
     )
     
-    # Modell laden
-    with st.spinner("Lade Modell..."):
-        model, tokenizer, device, is_trained, val_f1, epoch = load_trained_model()
-    
-    if model is None:
-        st.error("Modell konnte nicht geladen werden. Bitte Installation prüfen.")
-        st.stop()
-    
-    # Status anzeigen
-    if is_trained:
-        st.success(f"✅ Trainiertes Modell geladen (Epoche {epoch+1}, Val-F1: {val_f1:.2%}) auf {device.upper()}")
+    backend = st.sidebar.selectbox(
+        "Inference-Backend",
+        ["PyTorch (Server)", "ONNX (Server-CPU)", "ONNX (Client-Download)"],
+        index={"pytorch": 0, "onnx": 1}.get(DEFAULT_BACKEND, 0),
+    )
+
+    # Backend laden
+    if backend == "PyTorch (Server)":
+        with st.spinner("Lade PyTorch-Modell..."):
+            model, tokenizer, device, is_trained, val_f1, epoch = load_pytorch_model()
+        backend_label = f"PyTorch auf {device.upper()}"
+        onnx_session = None
+    elif backend == "ONNX (Server-CPU)":
+        with st.spinner("Lade ONNX-Modell..."):
+            onnx_session, tokenizer, device = load_onnx_session(
+                ONNX_QUANT_PATH if ONNX_QUANT_PATH.exists() else ONNX_PATH
+            )
+        model = None
+        is_trained = ONNX_PATH.exists() or ONNX_QUANT_PATH.exists()
+        val_f1 = None
+        epoch = None
+        backend_label = "ONNX (CPU)"
     else:
-        st.warning(f"⚠️ Untrainiertes Modell geladen auf {device.upper()}")
-    
+        model = None
+        tokenizer = None
+        device = "client"
+        is_trained = ONNX_PATH.exists() or ONNX_QUANT_PATH.exists()
+        val_f1 = None
+        epoch = None
+        backend_label = "Client-ONNX"
+        onnx_session = None
+
+    if backend != "PyTorch (Server)" and onnx_session is None and backend != "ONNX (Client-Download)":
+        st.error("ONNX-Backend nicht verfügbar. Bitte ONNX-Modell exportieren oder onnxruntime installieren.")
+        st.stop()
+
     # Sidebar mit Informationen
     with st.sidebar:
         st.header("ℹ️ Über das Modell")
@@ -232,16 +286,44 @@ def main():
         """)
         
         st.header("⚙️ Modell-Info")
-        total_params = sum(p.numel() for p in model.parameters())
-        st.metric("Parameter", f"{total_params/1e6:.1f}M")
-        st.metric("Gerät", device.upper())
-        st.metric("Encoder-Layer", "6 von 12")
-        
-        if is_trained:
+        st.metric("Backend", backend_label)
+        if model is not None:
+            total_params = sum(p.numel() for p in model.parameters())
+            st.metric("Parameter", f"{total_params/1e6:.1f}M")
+            st.metric("Gerät", device.upper())
+            st.metric("Encoder-Layer", "6 von 12")
+        if is_trained and val_f1 is not None:
             st.success(f"✅ Trainiert (Epoche {epoch+1})")
             st.metric("Val-F1", f"{val_f1:.2%}")
+        elif is_trained:
+            st.success("✅ Trainiertes ONNX-Modell gefunden")
         else:
             st.warning("❌ Nicht trainiert!")
+        if backend == "ONNX (Client-Download)":
+            st.info("Dieses Backend führt keine Server-Inferenz aus. ONNX-Modell herunterladen und im Browser/Client verwenden.")
+            if ONNX_PATH.exists():
+                st.download_button(
+                    "ONNX herunterladen",
+                    ONNX_PATH.read_bytes(),
+                    file_name=ONNX_PATH.name,
+                    mime="application/octet-stream",
+                )
+            if ONNX_QUANT_PATH.exists():
+                st.download_button(
+                    "Quantisiertes ONNX herunterladen",
+                    ONNX_QUANT_PATH.read_bytes(),
+                    file_name=ONNX_QUANT_PATH.name,
+                    mime="application/octet-stream",
+                )
+            st.markdown("""
+            Beispiel-Client (onnxruntime-web):
+            ```js
+            import { InferenceSession } from 'onnxruntime-web';
+            const session = await InferenceSession.create('model.onnx');
+            // Tokenize Text mit z.B. @xenova/transformers, dann:
+            const outputs = await session.run({input_ids, attention_mask});
+            ```
+            """)
     
     # Hauptinhalt
     col1, col2 = st.columns([1, 1])
@@ -277,29 +359,36 @@ def main():
         
         if analyze_button and input_text.strip():
             with st.spinner("Analysiere..."):
-                probs, caps_lengths = predict(input_text, model, tokenizer, device)
+                if backend == "PyTorch (Server)":
+                    probs, caps_lengths = predict_pytorch(input_text, model, tokenizer, device)
+                elif backend == "ONNX (Server-CPU)":
+                    probs, caps_lengths = predict_onnx(input_text, onnx_session, tokenizer)
+                else:
+                    st.warning("Client-Modus aktiv: Bitte ONNX-Modell herunterladen und lokal im Browser/Client ausführen.")
+                    probs, caps_lengths = None, None
             
-            # Top-Vorhersage
-            top_idx = probs.argmax()
-            top_label = LABELS_DE[top_idx]
-            top_prob = probs[top_idx] * 100
-            
-            st.markdown(f"""
-            <div class="prediction-box">
-                <h3>🎯 Vorhersage: <span style="color: {COLORS[top_idx]}">{top_label}</span></h3>
-                <h2>{top_prob:.1f}%</h2>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Wahrscheinlichkeits-Diagramm
-            prob_chart = create_probability_chart(probs)
-            st.plotly_chart(prob_chart, use_container_width=True)
-            
-            # Capsule-Visualisierung
-            with st.expander("🧩 Capsule-Aktivierungen anzeigen"):
-                caps_chart = create_capsule_viz(caps_lengths)
-                st.plotly_chart(caps_chart, use_container_width=True)
-                st.caption("Die Capsule-Längen repräsentieren die Konfidenz des Modells für jede Klasse.")
+            if probs is not None:
+                # Top-Vorhersage
+                top_idx = probs.argmax()
+                top_label = LABELS_DE[top_idx]
+                top_prob = probs[top_idx] * 100
+                
+                st.markdown(f"""
+                <div class="prediction-box">
+                    <h3>🎯 Vorhersage: <span style="color: {COLORS[top_idx]}">{top_label}</span></h3>
+                    <h2>{top_prob:.1f}%</h2>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Wahrscheinlichkeits-Diagramm
+                prob_chart = create_probability_chart(probs)
+                st.plotly_chart(prob_chart, use_container_width=True)
+                
+                # Capsule-Visualisierung
+                with st.expander("🧩 Capsule-Aktivierungen anzeigen"):
+                    caps_chart = create_capsule_viz(caps_lengths)
+                    st.plotly_chart(caps_chart, use_container_width=True)
+                    st.caption("Die Capsule-Längen repräsentieren die Konfidenz des Modells für jede Klasse.")
             
         elif analyze_button:
             st.warning("⚠️ Bitte gib einen Text zur Analyse ein.")
@@ -312,7 +401,7 @@ def main():
                 
                 Für echte Vorhersagen muss das Modell erst trainiert werden:
                 ```bash
-                python train.py --data german_large.json --epochs 30
+                python -m mentalroberta.training.train --data data/german_large.json --epochs 30
                 ```
                 """)
     
