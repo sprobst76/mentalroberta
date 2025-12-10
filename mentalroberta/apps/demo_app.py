@@ -78,6 +78,7 @@ ACCESS_TOKEN = os.getenv("MENTALROBERTA_APP_TOKEN")
 USAGE_LOG_PATH = Path(os.getenv("MENTALROBERTA_USAGE_LOG", "checkpoints/usage.log"))
 BROWSER_ONNX_URL = os.getenv("MENTALROBERTA_BROWSER_ONNX_URL", "/static/model.onnx")
 BROWSER_TOKENIZER_MODEL = os.getenv("MENTALROBERTA_BROWSER_TOKENIZER", BASE_MODEL_NAME)
+ACCESS_CODES_RAW = os.getenv("MENTALROBERTA_ACCESS_CODES", "")
 
 
 @st.cache_resource
@@ -202,6 +203,7 @@ def log_usage(event: str, backend: str, text_len: int, success: bool, is_trained
         record = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "session": get_session_id(),
+            "user": st.session_state.get("user_label"),
             "event": event,
             "backend": backend,
             "text_len": text_len,
@@ -227,6 +229,19 @@ def ensure_static_onnx():
     dst = static_dir / "model.onnx"
     shutil.copy(src, dst)
     return BROWSER_ONNX_URL or "/static/model.onnx"
+
+
+def parse_access_codes():
+    """
+    Parse access codes from env in the format "name1:code1,name2:code2".
+    """
+    codes = {}
+    if ACCESS_CODES_RAW:
+        parts = [p.strip() for p in ACCESS_CODES_RAW.split(",") if ":" in p]
+        for part in parts:
+            name, code = part.split(":", 1)
+            codes[code.strip()] = name.strip()
+    return codes
 
 
 def create_probability_chart(probs):
@@ -334,15 +349,20 @@ def render_browser_component(text: str, model_url: str):
 
 def main():
     # Optional Access Gate (simple shared token)
-    if ACCESS_TOKEN:
+    access_codes = parse_access_codes()
+    if ACCESS_TOKEN or access_codes:
         token = st.session_state.get("access_token") or st.query_params.get("token", [None])[0]
-        if token != ACCESS_TOKEN:
+        if token != ACCESS_TOKEN and token not in access_codes:
             st.title("🔒 Zugriff beschränkt")
             token_input = st.text_input("Access Token eingeben", type="password")
-            if st.button("Freischalten") and token_input == ACCESS_TOKEN:
-                st.session_state["access_token"] = ACCESS_TOKEN
-                st.experimental_rerun()
+            if st.button("Freischalten"):
+                if token_input == ACCESS_TOKEN or token_input in access_codes:
+                    st.session_state["access_token"] = token_input
+                    st.session_state["user_label"] = access_codes.get(token_input)
+                    st.experimental_rerun()
             st.stop()
+        else:
+            st.session_state["user_label"] = access_codes.get(token, None)
 
     st.markdown('<div class="main-header">🧠 MentalRoBERTa-Caps</div>', unsafe_allow_html=True)
     st.markdown(
