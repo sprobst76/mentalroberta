@@ -59,11 +59,12 @@ LABELS_DE = ['Depression', 'Angst', 'Bipolar', 'Suizidalität', 'Ventil']
 COLORS = ['#636EFA', '#EF553B', '#00CC96', '#AB63FA', '#FFA15A']
 
 # Konfiguration
-DEFAULT_MODEL = "deepset/gbert-base"
+BASE_MODEL_NAME = "deepset/gbert-base"
 CHECKPOINT_PATH = Path("checkpoints/best_model.pt")
 ONNX_PATH = Path("checkpoints/model.onnx")
 ONNX_QUANT_PATH = Path("checkpoints/model.int8.onnx")
 DEFAULT_BACKEND = os.getenv("MENTALROBERTA_BACKEND", "pytorch")
+BASE_MODEL_NAME = os.getenv("MENTALROBERTA_BASE_MODEL", BASE_MODEL_NAME)
 ACCESS_TOKEN = os.getenv("MENTALROBERTA_APP_TOKEN")
 USAGE_LOG_PATH = Path(os.getenv("MENTALROBERTA_USAGE_LOG", "checkpoints/usage.log"))
 
@@ -77,8 +78,8 @@ def load_pytorch_model():
         device = "cuda" if torch.cuda.is_available() else "cpu"
 
         checkpoint_path = Path(CHECKPOINT_PATH)
-        tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL)
-        model = MentalRoBERTaCaps(num_classes=5, num_layers=6, model_name=DEFAULT_MODEL)
+        tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL_NAME)
+        model = MentalRoBERTaCaps(num_classes=5, num_layers=6, model_name=BASE_MODEL_NAME)
 
         is_trained = False
         val_f1 = 0
@@ -118,7 +119,7 @@ def load_onnx_session(onnx_path: Path):
     sess_opts = ort.SessionOptions()
     providers = ["CPUExecutionProvider"]
     session = ort.InferenceSession(onnx_path.as_posix(), sess_options=sess_opts, providers=providers)
-    tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL)
+    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL_NAME)
 
     return session, tokenizer, "cpu"
 
