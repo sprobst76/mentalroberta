@@ -15,6 +15,7 @@
 - Export ONNX (for CPU/edge/browser): `python -m mentalroberta.tools.export_onnx --checkpoint checkpoints/best_model.pt --output checkpoints/model.onnx --quantize`.
 - Launch the demo (CPU/GPU both supported): `streamlit run mentalroberta/apps/demo_app.py` and choose the backend (PyTorch server, ONNX server-CPU, or ONNX download for client use). Optional gate: set `MENTALROBERTA_APP_TOKEN` to require a shared token via `?token=...` or prompt.
 - Optional anonymes Logging: setze `MENTALROBERTA_USAGE_LOG` auf einen Dateipfad, um Aufrufe (Zeit, Session-ID, Backend, Textlänge, Erfolg) zu protokollieren.
+- Basis-HF-Modell für Demo über env setzen: `MENTALROBERTA_BASE_MODEL` (Default: `deepset/gbert-base`).
 
 ## Coding Style & Naming Conventions
 - Follow PEP 8; 4-space indentation; prefer descriptive lower_snake_case for functions/vars and PascalCase for classes (e.g., `MentalHealthDataset`).
