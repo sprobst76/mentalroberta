@@ -55,20 +55,26 @@ python -c "import torch; print(f'CUDA: {torch.cuda.is_available()}')"
 
 ```
 MentalRoBERTa/
-├── model.py                  # Modell-Architektur
-├── train.py                  # Training-Script
-├── inference.py              # Inference-Script (neu erstellen)
-├── demo_app.py               # Streamlit Demo
-├── augment_german.py         # Daten-Augmentierung
+├── model.py                       # Modell-Architektur
+├── inference.py                   # Inference-Script
+├── training/                      # Training & Daten-Tools
+│   ├── train.py                   # Training-Script
+│   ├── augment_german.py          # Daten-Augmentierung
+│   └── download_dataset.py        # Download-Helfer
+├── apps/
+│   └── demo_app.py                # Streamlit Demo
+├── tools/
+│   └── quick_test.py              # Schneller Architektur-Test
 │
-├── german_data.json          # Basis-Trainingsdaten (175 Samples)
-├── german_augmented.json     # Augmentierte Daten (1050 Samples)
+├── data/                          # Beispieldaten (JSON/CSV)
+│   ├── german_data.json           # Basis-Trainingsdaten (175 Samples)
+│   └── german_augmented.json      # Augmentierte Daten (1050 Samples)
 │
-├── checkpoints/              # Wird beim Training erstellt
-│   ├── best_model.pt         # Bestes Modell
-│   └── test_report.json      # Evaluations-Report
+├── checkpoints/                   # Wird beim Training erstellt
+│   ├── best_model.pt              # Bestes Modell
+│   └── test_report.json           # Evaluations-Report
 │
-└── outputs/                  # Für Vorhersagen
+└── outputs/                       # Für Vorhersagen
     └── predictions.json
 ```
 
@@ -141,14 +147,14 @@ python augment_german.py --input german_data.json \
 ### 4.1 Basis-Training starten
 
 ```bash
-python train.py --data german_augmented.json --epochs 15 --batch_size 16
+python -m mentalroberta.training.train --data data/german_augmented.json --epochs 15 --batch_size 16
 ```
 
 ### 4.2 Alle Training-Parameter
 
 ```bash
-python train.py \
-    --data german_augmented.json \
+python -m mentalroberta.training.train \
+    --data data/german_augmented.json \
     --output checkpoints \
     --model_name deepset/gbert-base \
     --epochs 15 \
@@ -202,7 +208,7 @@ Training: 100%|██████████| 53/53 [01:23<00:00]
 
 ```python
 import torch
-from model import MentalRoBERTaCaps
+from mentalroberta.model import MentalRoBERTaCaps
 from transformers import AutoTokenizer
 
 # Konfiguration
@@ -372,7 +378,7 @@ import torch
 import torch.nn.functional as F
 from transformers import AutoTokenizer
 import re
-from model import MentalRoBERTaCaps
+from mentalroberta.model import MentalRoBERTaCaps
 
 # Konfiguration
 MODEL_NAME = "deepset/gbert-base"
@@ -615,7 +621,7 @@ print("✅ ONNX Export erfolgreich!")
 **"CUDA out of memory"**
 ```bash
 # Kleinere Batch-Größe verwenden
-python train.py --data german_augmented.json --batch_size 8
+python -m mentalroberta.training.train --data data/german_augmented.json --batch_size 8
 ```
 
 **"Model not found"**
@@ -637,10 +643,10 @@ ls checkpoints/
 python augment_german.py --input german_data.json --output german_xlarge.json --factor 20 --balance
 
 # Längeres Training
-python train.py --data german_xlarge.json --epochs 30 --batch_size 16
+python -m mentalroberta.training.train --data data/german_xlarge.json --epochs 30 --batch_size 16
 
 # Andere Lernrate
-python train.py --data german_augmented.json --learning_rate 1e-5 --epochs 20
+python -m mentalroberta.training.train --data data/german_augmented.json --learning_rate 1e-5 --epochs 20
 ```
 
 ### 11.3 Modell-Auswahl

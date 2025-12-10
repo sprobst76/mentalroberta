@@ -3,7 +3,7 @@ Training Script for MentalRoBERTa-Caps
 Based on Wagay et al. (2025)
 
 Usage:
-    python train.py --data synthetic_data.json --epochs 10 --batch_size 16
+    python -m mentalroberta.training.train --data data/synthetic_data.json --epochs 10 --batch_size 16
 """
 
 import torch
@@ -23,7 +23,7 @@ warnings.filterwarnings('ignore', category=UserWarning)  # Unterdrücke sklearn 
 from collections import Counter
 import re
 
-from model import MentalRoBERTaCaps
+from mentalroberta.model import MentalRoBERTaCaps
 
 
 # ============================================================

@@ -3,7 +3,7 @@
 Quick Test Script for MentalRoBERTa-Caps
 Demonstrates the model without requiring Streamlit
 
-Usage: python quick_test.py
+Usage: python -m mentalroberta.tools.quick_test
 """
 
 import torch
@@ -18,7 +18,7 @@ print()
 
 # Import model
 print("📦 Loading model architecture...")
-from model import MentalRoBERTaCaps
+from mentalroberta.model import MentalRoBERTaCaps
 
 # Labels
 LABELS = ['depression', 'anxiety', 'bipolar', 'SuicideWatch', 'offmychest']

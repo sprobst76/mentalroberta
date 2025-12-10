@@ -44,19 +44,13 @@ pip install torch transformers streamlit plotly pandas numpy
 ### 2. Run Quick Test
 
 ```bash
-python quick_test.py
+python -m mentalroberta.tools.quick_test
 ```
 
 ### 3. Start Interactive Demo
 
 ```bash
-streamlit run demo_app.py
-```
-
-Or use the shell script:
-```bash
-chmod +x start_demo.sh
-./start_demo.sh
+streamlit run mentalroberta/apps/demo_app.py
 ```
 
 ---
@@ -139,7 +133,7 @@ With data augmentation:
 ### Python API
 
 ```python
-from model import MentalRoBERTaCaps, MentalRoBERTaCapsClassifier
+from mentalroberta.model import MentalRoBERTaCaps, MentalRoBERTaCapsClassifier
 
 # Option 1: Use the high-level classifier
 classifier = MentalRoBERTaCapsClassifier(num_classes=5)
@@ -167,7 +161,7 @@ capsule_lengths = model.get_capsule_lengths(capsule_outputs)
 ```python
 import torch
 from torch.optim import AdamW
-from model import MentalRoBERTaCaps
+from mentalroberta.model import MentalRoBERTaCaps
 
 # Initialize
 model = MentalRoBERTaCaps(num_classes=5)
@@ -188,13 +182,24 @@ for batch in dataloader:
 ## 📁 File Structure
 
 ```
-mental_roberta_caps/
-├── model.py          # Core model implementation
-├── demo_app.py       # Streamlit interactive demo
-├── quick_test.py     # Quick architecture test
-├── requirements.txt  # Python dependencies
-├── start_demo.sh     # Shell script to start demo
-└── README.md         # This file
+mentalroberta/               # Package
+├── model.py                 # Core model implementation
+├── inference.py             # Inference CLI utilities
+├── apps/
+│   └── demo_app.py          # Streamlit interactive demo
+├── tools/
+│   └── quick_test.py        # Quick architecture test
+└── training/
+    ├── train.py             # Training loop and dataset prep
+    ├── augment_data.py      # English data augmentation
+    ├── augment_german.py    # German data augmentation
+    ├── download_dataset.py  # Dataset downloader (full)
+    └── download_simple.py   # Minimal dataset downloader
+
+data/                        # Sample datasets (JSON/CSV)
+checkpoints/                 # Saved models (git-ignored)
+requirements.txt             # Python dependencies
+README.md                    # This file
 ```
 
 ---

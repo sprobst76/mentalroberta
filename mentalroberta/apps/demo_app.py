@@ -13,7 +13,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import re
 from pathlib import Path
-from model import MentalRoBERTaCaps
+from mentalroberta.model import MentalRoBERTaCaps
 
 # Seiten-Konfiguration
 st.set_page_config(

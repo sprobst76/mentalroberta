@@ -4,13 +4,13 @@ Inference-Script für MentalRoBERTa-Caps
 
 Verwendung:
     # Einzelner Text
-    python inference.py --text "Ich fühle mich so leer..."
+    python -m mentalroberta.inference --text "Ich fühle mich so leer..."
     
     # Aus Datei
-    python inference.py --input texte.json --output vorhersagen.json
+    python -m mentalroberta.inference --input texte.json --output vorhersagen.json
     
     # Interaktiver Modus
-    python inference.py --interactive
+    python -m mentalroberta.inference --interactive
 """
 
 import torch
@@ -22,7 +22,7 @@ import re
 from pathlib import Path
 from tqdm import tqdm
 
-from model import MentalRoBERTaCaps
+from mentalroberta.model import MentalRoBERTaCaps
 
 
 # Konfiguration

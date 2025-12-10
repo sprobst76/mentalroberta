@@ -90,6 +90,13 @@ cached/
 temp/
 tmp/
 
+# Allow checked-in sample data
+!data/
+data/*
+!data/Combined Data.csv
+!data/german_*.json
+!data/synthetic_data.json
+
 # Hugging Face
 huggingface/
 hf_c_
